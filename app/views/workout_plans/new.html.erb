@@ -1,0 +1,22 @@
+<%= form_for @workout_plan do |f| %>
+  <%= f.fields_for @workout_plan.exercises.build do |exercise_field| %>
+
+    <%= exercise_field.fields_for :muscle_group do |field| %>
+      <%= field.label 'Muscle Group' %>
+      <%= field.text_field :name %>
+    <% end %><br><br>
+
+    <%= exercise_field.fields_for :workout do |field| %>
+      <%= field.label 'Workout' %>
+      <%= field.text_field :name %>
+
+      <%= field.label 'Sets' %>
+      <%= field.text_field :sets %>
+
+      <%= field.label 'Reps' %>
+      <%= field.text_field :reps %>
+    <% end %>
+  <% end %><br><br>
+
+  <%= f.submit %>
+<% end %>
