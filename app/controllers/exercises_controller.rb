@@ -11,6 +11,6 @@ class ExercisesController < ApplicationController
   private
 
   def exercise_params
-    params.require(:exercise).permit(:muscle_group_id, :workouts_attributes => [:name, :sets, :reps])
+    params.require(:exercise).permit(:muscle_group, :workouts_attributes => [:name, :sets, :reps])
   end
 end

@@ -1,0 +1,18 @@
+<%= form_for @muscle_group do |f| %>
+
+  <%= f.collection_select :id, MuscleGroup.all, :id, :name, include_blank: 'Select' %>
+  <br><br>
+
+  <%= f.fields_for :workouts, @muscle_group.workouts.build do |field| %>
+    <%= field.label 'Workout' %>
+    <%= field.text_field :name %>
+
+    <%= field.label 'Sets' %>
+    <%= field.text_field :sets %>
+
+    <%= field.label 'Reps' %>
+    <%= field.text_field :reps %>
+  <% end %><br><br>
+
+  <%= f.submit %>
+<% end %>

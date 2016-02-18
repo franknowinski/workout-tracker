@@ -1,13 +1,10 @@
 class Exercise < ActiveRecord::Base
   belongs_to :workout_plan
-  has_many :workouts
-  # has_one :muscle_group
-  # belongs_to :workout
   belongs_to :muscle_group
-  # accepts_nested_attributes_for :workouts_attributes
+  has_many :workouts
 
-  def muscle_group_id=(muscle_group_id)
-    self.muscle_group = MuscleGroup.find(muscle_group_id)
+  def muscle_group=(muscle_group_id)
+    self.update(muscle_group_id: muscle_group_id)
   end
 
   def workouts_attributes=(workouts)

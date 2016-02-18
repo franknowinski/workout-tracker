@@ -1,12 +1,11 @@
 <h2>Workout Plan</h2>
 
-<ul>
-  <% @workout_plan.exercises.each do |exercise| %>
-    <li>Muscle Group: <%= exercise.muscle_group.name %></li><br>
-    <% exercise.workouts.each do |workout| %>
-      <li>Exercise: <%= workout.name %></li>
-      <li>Sets: <%= workout.sets %></li>
-      <li>Reps: <%= workout.reps %></li><br>
-    <% end %><br>
-  <% end %>
-</ul>
+<% @workout_plan.all_muscle_groups.each do |muscle| %>
+  <h2><%= muscle.capitalize %></h2>
+
+  <ul>
+    <% @workout_plan.send("#{muscle}_exercises").each do |muscle| %>
+      <%= render 'workout', muscle: muscle %>
+    <% end %>
+  </ul>
+<% end %>
