@@ -5,7 +5,7 @@
         <li>Hello <%= current_user.name %></li>
       <% end %>
       <li><%= link_to "Workout Plan", workout_plan_path(current_user.current_plan) %></li>
-      <li><%= link_to "New Exercise", new_exercise_path %></li>
+      <li><%= link_to "New Exercise", new_workout_plan_exercise_path(current_user.current_plan) %></li>
       <li><%= link_to "Sign out", destroy_user_session_path, method: :delete %></li>
     <% else %>
       <li><%= link_to "Sign in with Facebook", user_omniauth_authorize_path(:facebook) %></li>

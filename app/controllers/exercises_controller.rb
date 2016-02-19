@@ -1,4 +1,6 @@
 class ExercisesController < ApplicationController
+  before_action :set_exercise, only: [:edit]
+
   def new
     @exercise = Exercise.new
   end
@@ -9,6 +11,10 @@ class ExercisesController < ApplicationController
   end
 
   private
+
+  def set_exercise
+    @exercise = Exercise.find(params[:id])
+  end
 
   def exercise_params
     params.require(:exercise).permit(:muscle_group, :workouts_attributes => [:name, :sets, :reps])

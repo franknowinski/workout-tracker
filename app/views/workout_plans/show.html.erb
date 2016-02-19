@@ -4,8 +4,8 @@
   <h2><%= muscle.capitalize %></h2>
 
   <ul>
-    <% @workout_plan.send("#{muscle}_exercises").each do |muscle| %>
-      <%= render 'workout', muscle: muscle %>
+    <% @workout_plan.send("#{muscle}_exercises").each do |exercise| %>
+      <%= render 'workout', exercise: exercise %>
     <% end %>
   </ul>
 <% end %>

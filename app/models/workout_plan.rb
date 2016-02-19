@@ -36,8 +36,4 @@ class WorkoutPlan < ActiveRecord::Base
   def abs_exercises
     exercises.where(muscle_group_id: 7)
   end
-
-  def cardio_exercises
-    exercises.where(muscle_group_id: 8)
-  end
 end

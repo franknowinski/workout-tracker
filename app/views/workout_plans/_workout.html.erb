@@ -1,3 +1,6 @@
-<li>Name: <%= muscle.workouts.first.name %></li>
-<li>Sets: <%= muscle.workouts.first.sets %></li>
-<li>Reps: <%= muscle.workouts.first.reps %></li><br>
+<% exercise.workouts.each do |workout| %>
+  <li>Exercise: <%= workout.name %></li>
+  <li>Sets: <%= workout.sets %></li>
+  <li>Reps: <%= workout.reps %></li>
+  <li><%= link_to 'Edit', edit_workout_plan_workout_path(current_user.current_plan, workout) %></li><br>
+<% end %>

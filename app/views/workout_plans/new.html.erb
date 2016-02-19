@@ -1,20 +1,4 @@
 <%= form_for @workout_plan do |f| %>
-
-  <%= label_tag "Select what muscle group you would like to add a workout to:" %><br><br>
-  <%= f.collection_select(:muscle_group, MuscleGroup.all, :id, :name) %><br><br>
-
-  <% 3.times do %>
-    <%= f.fields_for :exercises, @workout_plan.exercises.workout.build do |field| %>
-      <%= field.label 'Workout' %>
-      <%= field.text_field :name %>
-
-      <%= field.label 'Sets' %>
-      <%= field.text_field :sets %>
-
-      <%= field.label 'Reps' %>
-      <%= field.text_field :reps %>
-    <% end %><br><br>
-  <% end %>
-
+  <%= render 'form' %>
   <%= f.submit %>
 <% end %>
