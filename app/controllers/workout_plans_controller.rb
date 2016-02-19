@@ -7,6 +7,9 @@ class WorkoutPlansController < ApplicationController
   end
 
   def show
+    unless @workout_plan.user == current_user
+      redirect_to root_path, alert: 'Access Denied'
+    end
   end
 
   def new
@@ -15,8 +18,12 @@ class WorkoutPlansController < ApplicationController
   end
 
   def destroy
-    @workout_plan.destroy
-    redirect_to root_path, notice: 'Successfully deleted your workout plan.'
+    if @workout_plan.user == current_user
+      @workout_plan.destroy
+      redirect_to root_path, notice: 'Successfully deleted your workout plan.'
+    else
+      redirect_to root_path, alert: 'Access Denied'
+    end
   end
 
   private

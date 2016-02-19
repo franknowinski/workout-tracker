@@ -1,0 +1,23 @@
+body {
+  background-color: lightblue;
+}
+
+/* NAVBAR */
+
+#navbar ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+
+li {
+  display: inline;
+  padding-right: 30px;
+  font-size: 1.3em;
+}
+
+/* ERROR MESSAGES */
+
+.field_with_errors {
+  color: red;
+}

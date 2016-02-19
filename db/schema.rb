@@ -33,6 +33,7 @@ ActiveRecord::Schema.define(version: 20160215210938) do
     t.string   "name"
     t.integer  "uid",                    limit: 8
     t.string   "provider"
+    t.integer  "role"
     t.string   "email",                            default: "", null: false
     t.string   "encrypted_password",               default: "", null: false
     t.string   "reset_password_token"

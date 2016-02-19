@@ -2,17 +2,17 @@ class ExercisesController < ApplicationController
   before_filter :authenticate_user!, only: [:new, :create]
 
   def new
+    if current_user != WorkoutPlan.find(params[:workout_plan_id]).user
+      redirect_to root_path, alert: 'Access Denied'
+    end
+
     @exercise = Exercise.new
   end
 
   def create
-    @exercise = Exercise.new
-
-    if params[:exercise][:muscle_group].empty?
-      @exercise.errors[:base] << 'Please select a muscle group.'
-      render :new
-    elsif empty_workouts?
-      @exercise.errors[:base] << 'Please enter at least one workout.'
+    if emtpy_muscle_group? || empty_workouts?
+      @exercise = Exercise.new
+      @exercise.errors[:base] << 'Please select a muscle group and input at least one workout.'
       render :new
     else
       current_user.current_plan.exercises.create(exercise_params)
@@ -22,7 +22,7 @@ class ExercisesController < ApplicationController
 
   private
 
-  def emtpy_muscle_group?(params)
+  def emtpy_muscle_group?
     params[:exercise][:muscle_group].empty?
   end
 

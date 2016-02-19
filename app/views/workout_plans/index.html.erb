@@ -1,4 +1,4 @@
-<h2><%= current_user.name if current_user.name %>'s Workout Plans</h2>
+<h2><%= "#{current_user.name}'s" if current_user.name %> Workout Plans</h2>
 
 <ul>
 <% @workout_plans.each do |workout_plan| %>

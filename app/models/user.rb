@@ -1,8 +1,15 @@
 class User < ActiveRecord::Base
   has_many :workout_plans
+  enum role: [:user, :guest, :admin]
+  after_initialize :set_default_role, :if => :new_record?
+
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable, :omniauthable, :omniauth_providers => [:facebook]
-         
+
+  def set_default_role
+    self.role ||= :user
+  end
+
   def current_plan
     if workout_plans.empty?
       WorkoutPlan.create(user_id: self.id)

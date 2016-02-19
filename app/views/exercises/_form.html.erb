@@ -10,14 +10,13 @@
 
 <% 3.times do  %>
   <%= f.fields_for :workouts, @exercise.workouts.build do |workout_field| %>
-    <%= workout_field.label 'Workout' %>
+    <%= workout_field.label 'Workout: ' %>
     <%= workout_field.text_field :name %>
 
-    <%= workout_field.label 'Sets' %>
+    <%= workout_field.label 'Sets: ' %>
     <%= workout_field.number_field :sets, min: 1, max: 10 %>
 
-    <%= workout_field.label 'Reps' %>
-    <%= workout_field.number_field :reps, min: 1, max: 30 %>
-    <br><br>
+    <%= workout_field.label 'Reps: ' %>
+    <%= workout_field.number_field :reps, min: 1, max: 30 %><br><br>
   <% end %>
 <% end %>
