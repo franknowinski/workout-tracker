@@ -7,6 +7,10 @@ class WorkoutPlan < ActiveRecord::Base
     self.exercises.collect{ |exercise| exercise.muscle_group.name.downcase }.uniq
   end
 
+  def created_date
+    created_at.strftime("%A, %b %d")
+  end
+
   def chest_exercises
     exercises.where(muscle_group_id: 1)
   end

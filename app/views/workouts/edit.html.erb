@@ -1,6 +1,6 @@
 <h2>Edit workout</h2>
 
-<%= form_for @workout do |f| %>
+<%= form_for @workout, url: url_for(controller: 'workouts', action: 'update') do |f| %>
   <%= f.label :name %>
   <%= f.text_field :name %>
 
@@ -13,4 +13,4 @@
   <%= f.submit %>
 <% end %>
 
-<%= link_to 'Delete Workout', destroy_workout_path(@workout) %>
+<%= link_to 'Delete Workout', destroy_workout_path(@workout), method: :delete %>

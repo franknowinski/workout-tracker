@@ -1,6 +1,7 @@
 <h2>Workout Plan</h2>
 
-<%= link_to 'Add Exercise', new_workout_plan_exercise_path(current_user.current_plan) %>
+<h3><%= link_to 'Add Exercise', new_workout_plan_exercise_path(current_user.current_plan) %> -
+<%= link_to 'Delete Workout Plan', destroy_workout_plan_path(current_user.current_plan), method: :delete %></h3>
 
 <% if @workout_plan.present? %>
   <% @workout_plan.all_muscle_groups.each do |muscle| %>

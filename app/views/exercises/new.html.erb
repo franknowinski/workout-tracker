@@ -1,4 +1,5 @@
 <%= form_for @exercise, :url => url_for(:controller => 'exercises', :action => 'create') do |f| %>
+
   <%= render "form", f: f %>
   <%= f.submit 'Create Exercises' %>
 <% end %>

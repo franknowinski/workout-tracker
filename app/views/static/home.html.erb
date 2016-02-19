@@ -1,0 +1,9 @@
+<% if user_signed_in? %>
+  <h1>Welcome to Your Personal Workout Tracker!</h1>
+
+  <% if current_user.current_plan.exercises.present? %>
+    <%= link_to 'Current Workout Plan', workout_plan_path(current_user.current_plan) %>
+  <% else %>
+    <%= link_to 'Create Workout Plan', new_workout_plan_exercise_path(current_user.current_plan) %>
+  <% end %>
+<% end %>

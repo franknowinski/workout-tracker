@@ -11,8 +11,8 @@ class WorkoutsController < ApplicationController
   end
 
   def destroy
-    Workout.find(params[:id]).destroy
-    redirect_to current_user.current_plan
+    Workout.find(params[:id]).exercise.destroy
+    redirect_to current_user.current_plan, notice: 'Successfully deleted your workout.'
   end
 
   private

@@ -2,6 +2,12 @@
 <%= f.collection_select :muscle_group, MuscleGroup.all, :id, :name, include_blank: 'Select' %>
 <br><br>
 
+<% if @exercise.errors.messages[:base].present? %>
+  <div class="field_with_errors">
+    <%= @exercise.errors.messages[:base].first %>
+  </div><br>
+<% end %>
+
 <% 3.times do  %>
   <%= f.fields_for :workouts, @exercise.workouts.build do |workout_field| %>
     <%= workout_field.label 'Workout' %>

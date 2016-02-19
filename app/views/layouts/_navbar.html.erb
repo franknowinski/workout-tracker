@@ -1,7 +1,7 @@
 <div id="navabar">
   <ul>
     <% if current_user %>
-      <li><%= link_to "Hello #{current_user.name}", root_url %></li>
+      <li><%= link_to "Hello #{current_user.name}", root_path %></li>
     <% end %>
 
     <% if user_signed_in? %>
@@ -9,9 +9,8 @@
         <li><%= link_to "Current Workout Plan", workout_plan_path(current_user.current_plan) %></li>
         <li><%= link_to "Create New Workout Plan", new_workout_plan_path %></li>
         <li><%= link_to "Workout Plans", workout_plans_path(current_user.current_plan) %></li>
-      <% else %>
-        <li><%= link_to 'Create Workout Plan', new_workout_plan_exercise_path(current_user.current_plan) %>
-      <% end %></li>
+      <% end %>
+
       <li><%= link_to "New Exercise", new_workout_plan_exercise_path(current_user.current_plan) %></li>
       <li><%= link_to "Sign out", destroy_user_session_path, method: :delete %></li>
     <% else %>
