@@ -4,9 +4,7 @@ class WorkoutPlan < ActiveRecord::Base
   has_many :workouts, through: :exercises
 
   def all_muscle_groups
-    self.exercises.collect do |exercise|
-      exercise.muscle_group.name.downcase
-    end.uniq
+    self.exercises.collect{ |exercise| exercise.muscle_group.name.downcase }.uniq
   end
 
   def chest_exercises

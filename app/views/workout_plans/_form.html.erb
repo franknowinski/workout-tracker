@@ -1,5 +1,5 @@
 <%= label_tag "Select what muscle group you would like to add a workout to:" %><br><br>
-<%= f.collection_select(:muscle_group, MuscleGroup.all, :id, :name) %><br><br>
+<%= f.collection_select(:muscle_group, MuscleGroup.muscle_groups, :id, :name) %><br><br>
 
 <% 3.times do %>
   <%= f.fields_for :exercises, @workout_plan.exercises.workout.build do |e_field| %>

@@ -2,7 +2,7 @@ class User < ActiveRecord::Base
   has_many :workout_plans
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable, :omniauthable, :omniauth_providers => [:facebook]
-
+         
   def current_plan
     if workout_plans.empty?
       WorkoutPlan.create(user_id: self.id)

@@ -1,4 +1,5 @@
 class ExercisesController < ApplicationController
+  before_filter :authenticate_user!, only: [:new]
   before_action :set_exercise, only: [:edit]
 
   def new

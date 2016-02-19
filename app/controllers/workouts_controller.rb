@@ -1,4 +1,5 @@
 class WorkoutsController < ApplicationController
+  before_filter :authenticate_user!, only: [:edit]
   before_action :set_workout, only: [:edit, :update]
 
   def edit
@@ -10,8 +11,10 @@ class WorkoutsController < ApplicationController
   end
 
   def destroy
-    binding.pry
+    Workout.find(params[:id]).destroy
+    redirect_to current_user.current_plan
   end
+
   private
 
   def set_workout

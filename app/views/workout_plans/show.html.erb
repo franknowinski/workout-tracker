@@ -1,11 +1,15 @@
 <h2>Workout Plan</h2>
 
-<% @workout_plan.all_muscle_groups.each do |muscle| %>
-  <h2><%= muscle.capitalize %></h2>
+<%= link_to 'Add Exercise', new_workout_plan_exercise_path(current_user.current_plan) %>
 
-  <ul>
-    <% @workout_plan.send("#{muscle}_exercises").each do |exercise| %>
-      <%= render 'workout', exercise: exercise %>
-    <% end %>
-  </ul>
+<% if @workout_plan.present? %>
+  <% @workout_plan.all_muscle_groups.each do |muscle| %>
+    <h2><%= muscle.capitalize %></h2>
+
+    <ul>
+      <% @workout_plan.send("#{muscle}_exercises").each do |exercise| %>
+        <%= render 'workout', exercise: exercise %>
+      <% end %>
+    </ul>
+  <% end %>
 <% end %>
