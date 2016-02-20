@@ -1,6 +1,6 @@
 <%= label_tag 'Select the muscle group you would like to create a workout for:' %><br><br>
 <%= f.collection_select :muscle_group, MuscleGroup.all, :id, :name, include_blank: 'Select' %>
-<br><br>
+<br><br><br>
 
 <% if @exercise.errors.messages[:base].present? %>
   <div class="field_with_errors">

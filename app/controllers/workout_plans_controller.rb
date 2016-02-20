@@ -20,7 +20,7 @@ class WorkoutPlansController < ApplicationController
   def destroy
     if @workout_plan.user == current_user
       @workout_plan.destroy
-      redirect_to root_path, notice: 'Successfully deleted your workout plan.'
+      redirect_to workout_plans_path(current_user), notice: 'Successfully deleted your workout plan.'
     else
       redirect_to root_path, alert: 'Access Denied'
     end

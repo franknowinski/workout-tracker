@@ -4,4 +4,8 @@
 
 Questions
 
-1. Validate Forms - How to have data that was inputted on invalid form reappear when the form is rendered again.
+1. Why do I have to Sign In through Facebook twice in order for it to register?
+
+2. Validate Forms - How to have data that was inputted on invalid form reappear when the form is rendered again.
+
+3. Destroy Routes
