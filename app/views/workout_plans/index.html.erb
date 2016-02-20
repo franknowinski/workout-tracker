@@ -1,7 +1,8 @@
-<h2><%= "#{current_user.name}'s" if current_user.name %> Workout Plans</h2>
+<div class="container" id="workout-plan-list">
+  <h2><%= "#{current_user.name}'s" if current_user.name %> Workout Plans</h2><br>
 
-<ul>
-<% @workout_plans.each do |workout_plan| %>
-  <li><%= link_to "Workout Plan - #{workout_plan.created_date}", workout_plan_path(workout_plan) %></li><br><br>
-<% end %>
-</ul>
+  <% @workout_plans.each do |workout_plan| %>
+    <h4><%= link_to "Workout Plan - #{workout_plan.created_date}", workout_plan_path(workout_plan) %></h4><br>
+  <% end %>
+  </ul>
+</div>

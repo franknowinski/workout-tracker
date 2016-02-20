@@ -1,6 +1,20 @@
-<% exercise.workouts.each do |workout| %>
-  <li>Exercise: <%= workout.name %></li>
-  <li>Sets: <%= workout.sets %></li>
-  <li>Reps: <%= workout.reps %></li>
-  <li><%= link_to 'Edit', edit_workout_plan_workout_path(current_user.current_plan, workout) %></li><br>
-<% end %>
+<table class="table workout-plan-table clearfix">
+  <thead>
+    <tr>
+      <th>Exercise</th>
+      <th>Sets</th>
+      <th>Reps</th>
+      <th>Edit</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% exercise.workouts.each do |workout| %>
+    <tr>
+      <td><%= workout.name %></td>
+      <td><%= workout.sets %></td>
+      <td><%= workout.reps %></td>
+      <td><%= link_to 'Edit', edit_workout_plan_workout_path(current_user.current_plan, workout) %></td>
+    </tr>
+    <% end %>
+  </tbody>
+</table>

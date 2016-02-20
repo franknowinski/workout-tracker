@@ -4,16 +4,37 @@ body {
 
 /* NAVBAR */
 
+#navbar {
+  padding: 30px;
+}
+
 #navbar ul {
   list-style-type: none;
   margin: 0;
   padding: 0;
 }
 
-li {
+#navbar ul li {
   display: inline;
-  padding-right: 30px;
-  font-size: 1.3em;
+  margin-right: 50px;
+  font-size: 1.4em;
+}
+
+#navbar ul li a:hover {
+  color: navy;
+}
+
+/* HOMEPAGE */
+
+#hompage-header {
+  text-align: center;
+  color: white;
+  text-shadow: 1px 2px 2px navy;
+}
+
+#homepage-link {
+  text-align: center;
+  padding: 30px;
 }
 
 /* ERROR MESSAGES */

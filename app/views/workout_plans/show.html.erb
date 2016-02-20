@@ -1,16 +1,22 @@
-<h2>Workout Plan</h2>
+<h2 id="workout-plan-header">Your Current Workout Plan</h2>
 
-<h3><%= link_to 'Add Exercise', new_workout_plan_exercise_path(current_user.current_plan) %> -
-<%= link_to 'Delete Workout Plan', destroy_workout_plan_path(current_user.current_plan), method: :delete %></h3>
+<h4 id="workout-plan-links">
+  <%= link_to 'Add Exercise', new_workout_plan_exercise_path(current_user.current_plan) %> -
+  <%= link_to 'Delete Workout Plan', destroy_workout_plan_path(current_user.current_plan), method: :delete %>
+</h4><br>
 
 <% if @workout_plan.present? %>
   <% @workout_plan.all_muscle_groups.each do |muscle| %>
-    <h2><%= muscle.capitalize %></h2>
+    <div class="row">
+      <div class="container col-sm-offset-2 col-sm-2">
+        <h2><%= muscle.capitalize %></h2><br>
+      </div>
 
-    <ul>
-      <% @workout_plan.send("#{muscle}_exercises").each do |exercise| %>
-        <%= render 'workout', exercise: exercise %>
-      <% end %>
-    </ul>
+      <div class="col-sm-6">
+        <% @workout_plan.send("#{muscle}_exercises").each do |exercise| %>
+          <%= render 'workout', exercise: exercise %>
+        <% end %>
+      </div>
+    </div><br>
   <% end %>
 <% end %>

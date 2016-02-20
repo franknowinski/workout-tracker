@@ -1,16 +1,7 @@
-<h2>Edit workout</h2>
+<div class="container form-group" id="new-exercise-form">
+  <h2>Edit workout</h2><br>
 
-<%= form_for @workout, url: url_for(controller: 'workouts', action: 'update') do |f| %>
-  <%= f.label :name %>
-  <%= f.text_field :name %>
-
-  <%= f.label :sets %>
-  <%= f.number_field :sets, min: 1, max: 10 %>
-
-  <%= f.label :reps %>
-  <%= f.number_field :reps, min: 1, max: 30 %> <br><br>
-
-  <%= f.submit %>
-<% end %>
-
-<%= link_to 'Delete Workout', destroy_workout_path(@workout), method: :delete %>
+  <%= form_for @workout, url: url_for(controller: 'workouts', action: 'update') do |f| %>
+    <%= render 'form', f: f %>
+  <% end %>
+</div>

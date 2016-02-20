@@ -12,7 +12,7 @@ class WorkoutsController < ApplicationController
 
   def destroy
     if current_user == Workout.find(params[:id]).exercise.workout_plan.user
-      Workout.find(params[:id]).exercise.destroy
+      Workout.find(params[:id]).destroy
       redirect_to current_user.current_plan, notice: 'Successfully deleted your workout.'
     else
       redirect_to root_path, alert: 'Access Denied'
