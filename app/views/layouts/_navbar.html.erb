@@ -5,11 +5,9 @@
     <% end %>
 
     <% if user_signed_in? %>
-      <% if current_user.current_plan.exercises.present? %>
         <li><%= link_to "Current Workout Plan", workout_plan_path(current_user.current_plan) %></li>
         <li><%= link_to "Create New Workout Plan", new_workout_plan_path %></li>
         <li><%= link_to "Workout Plans", workout_plans_path(current_user.current_plan) %></li>
-      <% end %>
       <li><%= link_to "Sign out", destroy_user_session_path, method: :delete %></li>
     <% else %>
       <li><%= link_to "Sign in with Facebook", user_omniauth_authorize_path(:facebook) %></li>
