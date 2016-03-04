@@ -9,7 +9,7 @@ class Exercise < ActiveRecord::Base
 
   def workouts_attributes=(workouts)
     workouts.values.each do |workout|
-      self.workouts.create(workout) unless workout.values.all?{|info| info == ""}
+      self.workouts.build(workout) unless workout.values.all?{|info| info == ""}
     end
   end
 end

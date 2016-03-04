@@ -10,6 +10,6 @@ Questions
 
 3. Routes - Did I set up the destroy routes correctly?
 
-4. Did I set up the instance methods in the Exercise model right? (Could I use muscle_group_id?)
+4. Did I set up the instance methods in the Exercise model right?
 
 5. Do I need all the default Devise macros?

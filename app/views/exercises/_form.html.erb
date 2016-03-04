@@ -12,7 +12,7 @@
 <% end %>
 
 <% 3.times do  %>
-  <%= f.fields_for :workouts, @exercise.workouts.build do |workout_field| %>
+  <%= f.fields_for :workouts, @workouts do |workout_field| %>
     <%= workout_field.label 'Workout: ' %>
     <%= workout_field.text_field :name %>
 

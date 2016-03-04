@@ -7,6 +7,7 @@ class ExercisesController < ApplicationController
     end
 
     @exercise = Exercise.new
+    @workouts = @exercise.workouts.build
   end
 
   def create
@@ -15,8 +16,12 @@ class ExercisesController < ApplicationController
       @exercise.errors[:base] << 'Please select a muscle group and input at least one workout.'
       render :new
     else
-      current_user.current_plan.exercises.create(exercise_params)
-      redirect_to workout_plan_path(current_user.current_plan), notice: 'Successfully added an exercise to your workout!'
+      @exercise = current_user.current_plan.exercises.create(exercise_params)
+      if @exercise.save
+        redirect_to workout_plan_path(current_user.current_plan), notice: 'Successfully added an exercise to your workout!'
+      else
+        redirect_to root_path, alert: 'Exercise was not added to workout'
+      end
     end
   end
 
