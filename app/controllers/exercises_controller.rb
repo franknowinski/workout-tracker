@@ -13,6 +13,7 @@ class ExercisesController < ApplicationController
   def create
     if emtpy_muscle_group? || empty_workouts?
       @exercise = Exercise.new
+      @workouts = @exercise.workouts.build
       @exercise.errors[:base] << 'Please select a muscle group and input at least one workout.'
       render :new
     else
@@ -20,7 +21,7 @@ class ExercisesController < ApplicationController
       if @exercise.save
         redirect_to workout_plan_path(current_user.current_plan), notice: 'Successfully added an exercise to your workout!'
       else
-        redirect_to root_path, alert: 'Exercise was not added to workout'
+        redirect_to root_path, alert: 'Exercise was not added to your workout plan'
       end
     end
   end
