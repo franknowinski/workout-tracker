@@ -2,7 +2,16 @@
   <%= label_tag 'Select the muscle group you would like to create a workout for:' %>
 </p><br>
 <p>
-<%= f.collection_select :muscle_group, MuscleGroup.all, :id, :name, include_blank: 'Select' %>
+
+<% if @exercise.errors.any? %>
+    <div class="field_with_errors">
+    <% @exercise.errors.full_messages.each do |msg| %>
+      <p><%= msg %></p>
+    <% end %>
+  </div>
+<% end %>
+
+<%= f.collection_select :muscle_group_id, MuscleGroup.all, :id, :name, include_blank: 'Select' %>
 </p><br>
 
 <% if @exercise.errors.messages[:base].present? %>
@@ -12,7 +21,7 @@
 <% end %>
 
 <% 3.times do  %>
-  <%= f.fields_for :workouts, @workouts do |workout_field| %>
+  <%= f.fields_for :workouts, @exercise.workouts.build do |workout_field| %>
     <%= workout_field.label 'Workout: ' %>
     <%= workout_field.text_field :name %>
 

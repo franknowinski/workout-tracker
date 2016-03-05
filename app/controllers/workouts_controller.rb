@@ -11,6 +11,8 @@ class WorkoutsController < ApplicationController
   end
 
   def destroy
+    binding.pry
+    current_user.workouts.exists?(params[:id])
     if current_user == Workout.find(params[:id]).exercise.workout_plan.user
       Workout.find(params[:id]).destroy
       redirect_to current_user.current_plan, notice: 'Successfully deleted your workout.'
