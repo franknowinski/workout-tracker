@@ -11,9 +11,8 @@
       <div class="container col-sm-offset-2 col-sm-2">
         <h2><%= muscle.capitalize %></h2><br>
       </div>
-
       <div class="col-sm-6">
-        <% @workout_plan.send("#{muscle}_exercises").each do |exercise| %>
+        <% @workout_plan.muscle_group_by(muscle).each do |exercise| %>
           <%= render 'workout', exercise: exercise %>
         <% end %>
       </div>
