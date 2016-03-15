@@ -11,7 +11,11 @@ class User < ActiveRecord::Base
   end
 
   def user_name
-    name || email
+    if name
+      name.split(' ').first.capitalize
+    else
+      email.split('@').first.capitalize
+    end
   end
 
   def current_plan

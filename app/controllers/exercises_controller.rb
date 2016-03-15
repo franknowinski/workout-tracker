@@ -5,7 +5,6 @@ class ExercisesController < ApplicationController
     if !current_user.workout_plans.exists?(params[:workout_plan_id])
       redirect_to root_path, alert: 'Access Denied'
     end
-
     @exercise = Exercise.new
   end
 

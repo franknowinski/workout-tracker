@@ -1,5 +1,5 @@
 <h2 id="workout-plan-header">Your Current Workout Plan</h2>
-
+<h2><%= @workout_plan.name %></h2>
 <h4 id="workout-plan-links">
   <%= link_to 'Add Exercise', new_workout_plan_exercise_path(current_user.current_plan) %> -
   <%= link_to 'Delete Workout Plan', destroy_workout_plan_path(current_user.current_plan), method: :delete %>

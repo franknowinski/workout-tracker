@@ -2,17 +2,19 @@
 <html>
 <head>
   <title>WorkoutTracker</title>
-  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+  <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
 </head>
 <body>
   <div class="container-fluid" id="navbar-display">
-    <%= render 'layouts/navbar' %>
+    <% if user_signed_in? %>
+      <%= render 'layouts/navbar' %>
+    <% end %>
   </div>
 
   <div class="container">
-    <%= render 'layouts/messages' %>
+    <%= render 'layouts/messages' unless !user_signed_in? %>
     <%= yield %>
   </div>
 </body>

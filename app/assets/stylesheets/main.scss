@@ -5,22 +5,17 @@ body {
 /* NAVBAR */
 
 #navbar {
-  padding: 30px;
-  margin-left: 165px;
+  padding: 20px;
 }
-
-// #navbar-display {
-//   background-color: #00bfff;
-// }
 
 #navbar-display li {
   margin-left: 50px;
-  padding: 20px;
-
+  padding: 10px;
 }
 
-#sign-in-links {
-  margin-left: 530px;
+#signup-buttons {
+  margin-top: 10px;
+  text-align: center;
 }
 
 #navbar ul {
@@ -54,6 +49,11 @@ body {
 }
 
 /* HOMEPAGE */
+
+#welcome-header {
+  text-align:center;
+  margin-top: 120px;
+}
 
 #hompage-header {
   text-align: center;

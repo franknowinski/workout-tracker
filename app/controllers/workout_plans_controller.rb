@@ -4,10 +4,6 @@ class WorkoutPlansController < ApplicationController
 
   def index
     @workout_plans = current_user.workout_plans
-      respond_to do |format|
-        format.html { render :index }
-        format.js { render :index }
-    end
   end
 
   def show
@@ -17,7 +13,7 @@ class WorkoutPlansController < ApplicationController
   end
 
   def new
-    WorkoutPlan.create(user_id: current_user.id)
+    # WorkoutPlan.create(user_id: current_user.id)
     redirect_to new_workout_plan_exercise_path(current_user.current_plan)
   end
 

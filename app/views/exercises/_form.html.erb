@@ -1,10 +1,9 @@
 <p>
   <%= label_tag 'Select the muscle group you would like to create a workout for:' %>
 </p><br>
-<p>
 
 <% if @exercise.errors.any? %>
-    <div class="field_with_errors">
+  <div class="field_with_errors">
     <% @exercise.errors.full_messages.each do |msg| %>
       <p><%= msg %></p>
     <% end %>
