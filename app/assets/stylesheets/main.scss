@@ -1,5 +1,5 @@
 body {
-  background-color: #33ccff;
+  // background-color: #33ccff;
 }
 
 /* NAVBAR */
@@ -9,12 +9,18 @@ body {
   margin-left: 165px;
 }
 
-#navbar-display {
-  background-color: #00bfff;
+// #navbar-display {
+//   background-color: #00bfff;
+// }
+
+#navbar-display li {
+  margin-left: 50px;
+  padding: 20px;
+
 }
 
-#navbar-display a {
-  color: navy;
+#sign-in-links {
+  margin-left: 530px;
 }
 
 #navbar ul {
@@ -29,8 +35,22 @@ body {
   font-size: 1.4em;
 }
 
-#navbar ul li a:hover {
-  color: navy;
+/* FACEBOOK BUTTON */
+
+.btn-facebook {
+  background-color: #3B5998;
+  color: white;
+}
+
+.btn-facebook:hover{
+  color: white;
+  background-color: #2F487A;
+}
+
+/* Sign In/Log in */
+
+#sign-up {
+  text-align: center;
 }
 
 /* HOMEPAGE */

@@ -4,6 +4,10 @@ class WorkoutPlansController < ApplicationController
 
   def index
     @workout_plans = current_user.workout_plans
+      respond_to do |format|
+        format.html { render :index }
+        format.js { render :index }
+    end
   end
 
   def show

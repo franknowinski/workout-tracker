@@ -10,6 +10,10 @@ class User < ActiveRecord::Base
     self.role ||= :user
   end
 
+  def user_name
+    name || email
+  end
+
   def current_plan
     if workout_plans.empty?
       WorkoutPlan.create(user_id: self.id)

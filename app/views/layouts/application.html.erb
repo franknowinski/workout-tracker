@@ -7,14 +7,13 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
-<div class="container-fluid" id="navbar-display">
-  <%= render 'layouts/navbar' %>
-</div>
+  <div class="container-fluid" id="navbar-display">
+    <%= render 'layouts/navbar' %>
+  </div>
 
-<div class="container">
-  <%= render 'layouts/messages' %>
-  <%= yield %>
-</div>
-
+  <div class="container">
+    <%= render 'layouts/messages' %>
+    <%= yield %>
+  </div>
 </body>
 </html>
