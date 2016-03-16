@@ -19,11 +19,11 @@ class User < ActiveRecord::Base
   end
 
   def current_plan
-    if workout_plans.empty?
-      WorkoutPlan.create(user_id: self.id)
-    else
-      self.workout_plans.last
-    end
+    workout_plans.empty? ? new_plan : workout_plans.last
+  end
+
+  def new_plan
+    WorkoutPlan.create(user_id: self.id)
   end
 
   # Class Methods

@@ -14,7 +14,12 @@
 //= require jquery
 //= require jquery_ujs
 
+  // function attachListeners(){
+  //   $('#new-workout-plan').click(function(){
+  //     debugger;
+  //   })
+  // }
 
-// $(function(){
-//   attachListeners();
-// })
+$(function(){
+  attachListeners();
+})

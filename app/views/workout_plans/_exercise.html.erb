@@ -1,0 +1,10 @@
+<tbody>
+  <% exercise.workouts.each do |workout| %>
+    <tr>
+      <td><%= workout.name %></td>
+      <td><%= workout.sets %></td>
+      <td><%= workout.reps %></td>
+      <td><%= link_to 'Edit', edit_workout_plan_workout_path(current_user.current_plan, workout) %></td>
+    </tr>
+  <% end %>
+</tbody>

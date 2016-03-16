@@ -2,6 +2,6 @@
   <h2><%= "#{current_user.user_name}'s" if current_user.name %> Workout Plans</h2><br>
 
   <% @workout_plans.each do |workout_plan| %>
-    <h4><%= link_to "Workout Plan - #{workout_plan.created_date}", workout_plan_path(workout_plan) %></h4><br>
+    <h4><%= link_to "#{workout_plan.name} - #{workout_plan.created_date}", workout_plan_path(workout_plan) %></h4><br>
   <% end %>
 </div>

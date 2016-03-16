@@ -1,25 +1,9 @@
 <div id="navbar">
-    <!-- <% if current_user %>
-      <li><%= link_to "Hello #{current_user.user_name}", root_path %></li>
-    <% end %>
-
-    <% if user_signed_in? %>
-        <li><%= link_to "Current Workout Plan", workout_plan_path(current_user.current_plan) %></li>
-        <li><%= link_to "Create New Workout Plan", new_workout_plan_path %></li>
-        <li><%= link_to "Workout Plans", :controller => 'workout_plans', :action => 'index' %></li>
-      <li><%= link_to "Sign out", destroy_user_session_path, method: :delete %></li>
-    <% else %>
-      <%= link_to "Sign in with Facebook", user_omniauth_authorize_path(:facebook), class: "btn btn-social btn-md btn-facebook" %>
-      <span id="sign-in-links">
-        <li><%= link_to 'Sign in', new_user_session_path, class: 'btn btn-primary navbar-link' %></li>
-        <li><%= link_to 'Sign up', new_user_registration_path, class: 'btn btn-primary navbar-link' %></li>
-      </span>
-    <% end %> -->
   <div>
     <ul class="nav nav-tabs" role="tablist" id="navbar-display">
       <li role="presentation"><a href="/workout_plans" id="home" aria-controls="home" role="tab" ata-toggle="tab">Workout Plans</a></li>
       <li role="presentation"><a href="<%= workout_plan_path(current_user.current_plan) %>" aria-controls="profile" role="tab" data-toggle="tab">Current Workout Plan</a></li>
-      <li role="presentation"><a href="<%= new_workout_plan_path(current_user) %>" aria-controls="profile" role="tab" data-toggle="tab">New Workout Plan</a></li>
+      <li role="presentation"><a href="<%= new_workout_plan_path(current_user) %>" aria-controls="profile" id="new-workout-plan" role="tab" data-toggle="tab">New Workout Plan</a></li>
       <li role="presentation"><a href="<%= destroy_user_session_path %>" data-method="delete" aria-controls="profile" role="tab" data-toggle="tab">Logout</a></li>
     </ul>
   </div>

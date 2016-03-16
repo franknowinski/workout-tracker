@@ -14,6 +14,7 @@ gem 'omniauth-facebook'
 gem 'bootstrap-sass', '~> 3.3.6'
 
 group :development, :test do
+  gem "rspec-rails"
   gem 'pry-byebug'
   gem 'awesome_print', require: 'ap'
 end

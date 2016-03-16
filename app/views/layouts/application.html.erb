@@ -14,7 +14,7 @@
   </div>
 
   <div class="container">
-    <%= render 'layouts/messages' unless !user_signed_in? %>
+    <%= render 'layouts/messages' if user_signed_in? %>
     <%= yield %>
   </div>
 </body>

@@ -6,10 +6,13 @@ class ExercisesController < ApplicationController
       redirect_to root_path, alert: 'Access Denied'
     end
     @exercise = Exercise.new
+    @workout = current_plan if current_plan.name.nil?
   end
 
   def create
     @exercise = current_user.current_plan.exercises.create(exercise_params)
+    @exercise.workout_plan.update(name: params[:workout_plan][:name]) if @exercise.workout_plan.name.nil?
+
     if @exercise.save
       redirect_to workout_plan_path(current_user.current_plan), notice: 'Successfully added an exercise to your workout!'
     else

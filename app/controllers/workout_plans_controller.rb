@@ -7,13 +7,11 @@ class WorkoutPlansController < ApplicationController
   end
 
   def show
-    unless @workout_plan.user == current_user
-      redirect_to root_path, alert: 'Access Denied'
-    end
+    redirect_to root_path, alert: 'Access Denied' unless @workout_plan.user == current_user
   end
 
   def new
-    # WorkoutPlan.create(user_id: current_user.id)
+    current_user.new_plan
     redirect_to new_workout_plan_exercise_path(current_user.current_plan)
   end
 

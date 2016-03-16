@@ -1,21 +1,32 @@
-<h2 id="workout-plan-header">Your Current Workout Plan</h2>
-<h2><%= @workout_plan.name %></h2>
-<h4 id="workout-plan-links">
-  <%= link_to 'Add Exercise', new_workout_plan_exercise_path(current_user.current_plan) %> -
-  <%= link_to 'Delete Workout Plan', destroy_workout_plan_path(current_user.current_plan), method: :delete %>
-</h4><br>
-
 <% if @workout_plan.present? %>
+  <h2 id=workout-plan-header><%= @workout_plan.name %></h2>
+  <h4 id="workout-plan-links">
+    <%= link_to 'Add Exercise', new_workout_plan_exercise_path(current_user.current_plan) %> -
+    <%= link_to 'Delete Workout Plan', destroy_workout_plan_path(current_user.current_plan), method: :delete %>
+  </h4><br>
+
   <% @workout_plan.all_muscle_groups.each do |muscle| %>
     <div class="row">
       <div class="container col-sm-offset-2 col-sm-2">
         <h2><%= muscle.capitalize %></h2><br>
       </div>
       <div class="col-sm-6">
-        <% @workout_plan.muscle_group_by(muscle).each do |exercise| %>
-          <%= render 'workout', exercise: exercise %>
-        <% end %>
+        <table class="table workout-plan-table clearfix">
+          <thead>
+            <tr>
+              <th class="col-sm-3">Exercise</th>
+              <th class="col-sm-2">Sets</th>
+              <th class="col-sm-2">Reps</th>
+              <th class="col-sm-2">Edit</th>
+            </tr>
+          </thead>
+          <% @workout_plan.muscle_group_by(muscle).each do |exercise| %>
+            <%= render 'exercise', exercise: exercise %>
+          <% end %>
+        </table>
       </div>
     </div><br>
   <% end %>
+<% else %>
+  <%= link_to 'Create Workout', new_workout_plan_path(current_user) %>
 <% end %>
