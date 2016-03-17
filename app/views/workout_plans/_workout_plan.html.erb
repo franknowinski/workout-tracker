@@ -6,8 +6,8 @@
   </h4>
 
   <% @workout_plan.all_muscle_groups.each do |muscle| %>
-    <div class="row">
-      <div class="container col-sm-3 muscle-group">
+    <div class="row <%= muscle %>-group-row">
+      <div class="container col-sm-3">
         <h2><%= muscle.capitalize %></h2><br>
       </div>
       <div class="col-sm-8">

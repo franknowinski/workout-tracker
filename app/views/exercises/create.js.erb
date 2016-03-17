@@ -1,1 +1,8 @@
-$('table.workout-plan-table:last').append("<%= j render 'exer', exercise: @exercise %>")
+
+
+if ($('.' + $('#exercise_muscle_group_id').val() + '-workout').length == 0){
+  debugger;
+  $('.<%= @exercise.muscle_group.name.downcase %>-group-row').append("<%= j render 'exer', exercise: @exercise %>");
+} else {
+  $('.<%= @exercise.muscle_group.name.downcase %>-group-row div.col-sm-8 tbody').append("<%= j render 'muscle', exercise: @exercise %>")
+}

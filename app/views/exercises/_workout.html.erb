@@ -11,7 +11,7 @@
   <tbody>
     <% @workout_plan.muscle_group_by(muscle).each do |exercise| %>
       <% exercise.workouts.each do |workout| %>
-        <tr>
+        <tr class="<%= exercise.muscle_group.id %>-workout">
           <td><%= workout.name %></td>
           <td><%= workout.sets %></td>
           <td><%= workout.reps %></td>
