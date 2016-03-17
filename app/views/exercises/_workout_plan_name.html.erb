@@ -1,0 +1,6 @@
+<%= fields_for @workout_plan do |workout_plan| %>
+  <p class="col-sm-12">
+    <%= workout_plan.label 'Workout Plan Name:' %>
+    <%= workout_plan.text_field :name, class: 'form-control' %>
+  </p><br><br><br><br>
+<% end %>

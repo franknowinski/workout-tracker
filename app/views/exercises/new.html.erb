@@ -4,7 +4,7 @@
   </div>
 
   <div class="form-group col-sm-4" id="new-exercise-form">
-    <%= form_for @exercise, :url => url_for(:controller => 'exercises', :action => 'create'), :html => {:id => "exercise-form"} do |f| %>
+    <%= form_for @exercise, :url => url_for(:controller => 'exercises', :action => 'create'), :html => {:id => "exercise-form"}, remote: true do |f| %>
       <%= render "form", f: f %><br>
       <%= f.submit 'Create Exercises', class: 'btn btn-primary' %>
     <% end %>

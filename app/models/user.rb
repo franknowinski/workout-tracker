@@ -19,7 +19,7 @@ class User < ActiveRecord::Base
   end
 
   def current_plan
-    workout_plans.empty? ? new_plan : workout_plans.last
+    @current_plan ||= workout_plans.last
   end
 
   def new_plan

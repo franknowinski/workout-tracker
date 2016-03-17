@@ -1,30 +1,15 @@
 <% if @workout_plan.name.nil? %>
-  <%= fields_for @workout_plan do |workout_plan| %>
-    <p class="col-sm-12">
-      <%= workout_plan.label 'Workout Plan Name:' %>
-      <%= workout_plan.text_field :name, class: 'form-control' %>
-    </p><br><br><br><br>
-  <% end %>
+  <%= render 'workout_plan_name' %>
 <% end %>
 
 <p><%= label_tag 'Select the muscle group you would like to create a workout for:' %></p>
 
 <% if @exercise.errors.any? %>
-  <div class="field_with_errors">
-    <% @exercise.errors.full_messages.each do |msg| %>
-      <p><%= msg %></p>
-    <% end %>
-  </div>
+  <%= render 'error_messages' %>
 <% end %>
 
 <p><%= f.collection_select :muscle_group_id, MuscleGroup.all, :id, :name, include_blank: 'Select' %>
 </p><br>
-
-<% if @exercise.errors.messages[:base].present? %>
-  <div class="field_with_errors">
-    <%= @exercise.errors.messages[:base].first %>
-  </div><br>
-<% end %>
 
 <% 3.times do  %>
   <%= f.fields_for :workouts, @exercise.workouts.build do |workout_field| %>
