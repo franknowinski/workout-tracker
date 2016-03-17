@@ -2,15 +2,21 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
-#workout-plan-header {
+#workout-plan-name {
   text-align: center;
-  color: #99e6ff;
-  text-shadow: 1px 2px 2px navy;
+  color: rgb(48, 122, 185);
+  // text-shadow: 0px 1px 1px gray;
 }
 
 #workout-plan-links {
   text-align: center;
   padding: 20px;
+}
+
+#workout-plan-table {
+  margin-left: -50px;
+  border-right: 1px solid lightgray;
+  margin-right: 75px;
 }
 
 /* WORKOUT PLANS INDEX */

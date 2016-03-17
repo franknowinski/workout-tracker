@@ -1,0 +1,20 @@
+<% if @workout_plan.exercises.count > 0 %>
+  <h2 id=workout-plan-name><%= @workout_plan.name %></h2>
+
+  <h4 id="workout-plan-links">
+    <%= link_to 'Delete Workout Plan', destroy_workout_plan_path(current_user.current_plan), method: :delete %>
+  </h4>
+
+  <% @workout_plan.all_muscle_groups.each do |muscle| %>
+    <div class="row">
+      <div class="container col-sm-3 muscle-group">
+        <h2><%= muscle.capitalize %></h2><br>
+      </div>
+      <div class="col-sm-8">
+        <%= render 'workout', muscle: muscle %>
+      </div>
+    </div><br>
+  <% end %>
+<% else %>
+  <h2 id='workout-plan-name'>Create Your Workout Plan!</h2>
+<% end %>

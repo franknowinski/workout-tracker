@@ -7,6 +7,8 @@ class WorkoutPlansController < ApplicationController
   end
 
   def show
+    @exercise = Exercise.new
+    @workout = current_plan if current_plan.name.nil?
     redirect_to root_path, alert: 'Access Denied' unless @workout_plan.user == current_user
   end
 

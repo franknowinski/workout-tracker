@@ -1,0 +1,24 @@
+<table class="table table-hover clearfix">
+  <thead>
+    <tr>
+      <th class="col-sm-3">Exercise</th>
+      <th class="col-sm-2">Sets</th>
+      <th class="col-sm-2">Reps</th>
+      <th class="col-sm-2">Edit</th>
+      <th class="col-sm-2">Delete</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @workout_plan.muscle_group_by(muscle).each do |exercise| %>
+      <% exercise.workouts.each do |workout| %>
+        <tr>
+          <td><%= workout.name %></td>
+          <td><%= workout.sets %></td>
+          <td><%= workout.reps %></td>
+          <td><%= link_to 'Edit', edit_workout_plan_workout_path(current_user.current_plan, workout) %></td>
+          <td><%= link_to 'X', destroy_workout_path(workout), method: :delete %></td>
+        </tr>
+      <% end %>
+    <% end %>
+  </tbody>
+</table>

@@ -1,5 +1,6 @@
 source 'https://rubygems.org'
 
+gem 'active_model_serializers'
 gem 'rails', '4.2.5.1'
 gem 'sqlite3'
 gem 'sass-rails', '~> 5.0'

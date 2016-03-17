@@ -1,13 +1,13 @@
-<% if @workout %>
-  <%= fields_for @workout do |workout_plan| %>
-    <p>
-      <%= workout_plan.label :name %>
-      <%= workout_plan.text_field :name %>
-    </p><br>
+<% if @workout_plan.name.nil? %>
+  <%= fields_for @workout_plan do |workout_plan| %>
+    <p class="col-sm-12">
+      <%= workout_plan.label 'Workout Plan Name:' %>
+      <%= workout_plan.text_field :name, class: 'form-control' %>
+    </p><br><br><br><br>
   <% end %>
 <% end %>
 
-<p><%= label_tag 'Select the muscle group you would like to create a workout for:' %></p><br>
+<p><%= label_tag 'Select the muscle group you would like to create a workout for:' %></p>
 
 <% if @exercise.errors.any? %>
   <div class="field_with_errors">
@@ -28,13 +28,21 @@
 
 <% 3.times do  %>
   <%= f.fields_for :workouts, @exercise.workouts.build do |workout_field| %>
-      <%= workout_field.label 'Workout: ' %>
-      <%= workout_field.text_field :name %>
+      <div class="row">
+        <div class="col-sm-6">
+          <%= workout_field.label 'Workout: ' %>
+          <%= workout_field.text_field :name, class: 'form-control' %>
+        </div>
 
-      <%= workout_field.label 'Sets: ' %>
-      <%= workout_field.number_field :sets, min: 1, max: 10 %>
+        <div class="col-sm-3">
+          <%= workout_field.label 'Sets: ' %>
+          <%= workout_field.number_field :sets, min: 1, max: 10, class: 'form-control' %>
+        </div>
 
-      <%= workout_field.label 'Reps: ' %>
-      <%= workout_field.number_field :reps, min: 1, max: 30 %><br><br>
+        <div class="col-sm-3">
+          <%= workout_field.label 'Reps: ' %>
+          <%= workout_field.number_field :reps, min: 1, max: 30, class: 'form-control' %><br>
+        </div>
+      </div>
   <% end %>
 <% end %>
