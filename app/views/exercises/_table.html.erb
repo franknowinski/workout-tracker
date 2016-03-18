@@ -1,4 +1,4 @@
-<div class="row <%= exercise.muscle_group.name.downcase %>-group-row">
+<div class="row <%= exercise.muscle_group %>-group">
   <div class="container col-sm-3">
     <h2><%= exercise.muscle_group.name.capitalize %></h2><br>
   </div>
@@ -17,12 +17,13 @@
       <tbody>
         <% exercise.workout_plan.muscle_group_by(exercise.muscle_group.name.downcase).each do |exercise| %>
           <% exercise.workouts.each do |workout| %>
-            <tr class="<%= exercise.muscle_group.id %>-workout">
+            <input type="text" class="view" hidden>
+            <tr data-muscle-group-id="<%= exercise.muscle_group.id %>" data-workout-id="<%= workout.id %>">
               <td><%= workout.name %></td>
               <td><%= workout.sets %></td>
               <td><%= workout.reps %></td>
               <td><%= link_to 'Edit', edit_workout_plan_workout_path(current_user.current_plan, workout) %></td>
-              <td><%= link_to 'X', destroy_workout_path(workout), method: :delete %></td>
+              <td><%= link_to 'X', workout_plan_destroy_workout_path(workout.exercise.workout_plan, workout), data: {id: workout.id }, method: :delete, remote: :true %></td>
             </tr>
           <% end %>
         <% end %>

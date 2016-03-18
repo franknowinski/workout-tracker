@@ -7,13 +7,12 @@ class WorkoutsController < ApplicationController
 
   def update
     @workout.update(workout_params)
-    redirect_to current_user.current_plan
+    redirect_to new_workout_plan_exercise_path(params[:workout_plan_id])
   end
 
   def destroy
-    if current_user.current_plan.workouts.exists?(params[:id])
-      Workout.find(params[:id]).destroy
-      redirect_to current_user.current_plan, notice: 'Successfully deleted your workout.'
+    if current_user.workouts.exists?(params[:id])
+      @workout = Workout.find(params[:id]).destroy
     else
       redirect_to root_path, alert: 'Access Denied'
     end

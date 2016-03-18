@@ -27,7 +27,37 @@ function attachListeners(){
     //   dataType: 'script',
     //   data: $(this).serialize()
     // })
-  })
+  });
+
+  $('tbody td a').click(function(event){
+    event.preventDefault();
+
+    // REMOVED TO UTILIZE REMOTE TRUE
+    // var method = $(this).data('method');
+    // var deleteURL = $(this).attr('href');
+    //
+    // $.ajax(deleteURL, {
+    //   type: method,
+    //   dataType: 'script',
+    // })
+  });
+
+  $('a.edit-link').click(function(){
+
+    var workoutId = $(this).parents('tr').data('workout-id')
+    var workoutRow = $('tr[data-workout-id="' + workoutId + '"]')
+
+    $('span', workoutRow).addClass('hide-row');
+    $('input', workoutRow).attr('id', 'edit-workout')
+
+  });
+
+  $(document).keypress(function(e) {
+    if(e.which == 13) {
+      debugger;
+        alert('You pressed enter!');
+    }
+  });
 }
 
 $(function(){

@@ -1,7 +1,9 @@
-if ($('.' + $('#exercise_muscle_group_id').val() + '-workout').length == 0){
+var muscleGroupId = $('#exercise_muscle_group_id').val()
+
+if ($('[data-muscle-group-id="' + muscleGroupId + '"]').length == 0){
   $('#workout-plan-table').append("<%= j render 'table', exercise: @exercise %>");
 } else {
-  $('.<%= @exercise.muscle_group.name.downcase %>-group-row div.col-sm-8 tbody').append("<%= j render 'table_row', exercise: @exercise %>");
+  $('.<%= @exercise.muscle_group.name.downcase %>-group div.col-sm-8 tbody').append("<%= j render 'table_row', exercise: @exercise %>");
 }
 
 $('#exercise-form input.form-control').val('');

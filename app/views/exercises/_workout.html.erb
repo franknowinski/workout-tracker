@@ -11,12 +11,27 @@
   <tbody>
     <% @workout_plan.muscle_group_by(muscle).each do |exercise| %>
       <% exercise.workouts.each do |workout| %>
-        <tr class="<%= exercise.muscle_group.id %>-workout">
-          <td><%= workout.name %></td>
-          <td><%= workout.sets %></td>
-          <td><%= workout.reps %></td>
-          <td><%= link_to 'Edit', edit_workout_plan_workout_path(current_user.current_plan, workout) %></td>
-          <td><%= link_to 'X', destroy_workout_path(workout), method: :delete %></td>
+        <tr class="workout-rows" data-muscle-group-id="<%= exercise.muscle_group.id %>" data-workout-id="<%= workout.id %>">
+
+        <%= form_for ([@workout_plan, workout]) do |f| %>
+          <td>
+            <span><%= workout.name %></span>
+            <%= f.text_field :name, {class: 'form-control', value: workout.name} %>
+          </td>
+
+          <td>
+            <span><%= workout.sets %></span>
+            <%= f.text_field :sets, {class: 'form-control', value: workout.sets} %>
+          </td>
+
+          <td>
+            <span><%= workout.reps %></span>
+            <%= f.text_field :reps, {class: 'form-control', value: workout.reps} %>
+          </td>
+          <%= f.submit style: 'display: none;' %>
+        <% end %>
+          <td><%= link_to 'Edit', edit_workout_plan_workout_path(current_user.current_plan, workout), class: 'edit-link' %></td>
+          <td><%= link_to 'X', workout_plan_destroy_workout_path(workout.exercise.workout_plan, workout), data: {id: workout.id }, method: :delete,  remote: :true %></td>
         </tr>
       <% end %>
     <% end %>
