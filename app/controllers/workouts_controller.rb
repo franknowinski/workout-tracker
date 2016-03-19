@@ -7,7 +7,7 @@ class WorkoutsController < ApplicationController
 
   def update
     @workout.update(workout_params)
-    redirect_to new_workout_plan_exercise_path(params[:workout_plan_id])
+    # redirect_to new_workout_plan_exercise_path(params[:workout_plan_id])
   end
 
   def destroy

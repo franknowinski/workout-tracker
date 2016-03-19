@@ -14,20 +14,31 @@
 //= require jquery_ujs
 
 function attachListeners(){
-  $('#exercise-form').submit(function(event){
-    event.preventDefault();
 
-    // REMOVED TO UTILIZE REMOTE TRUE
-    // var form_method = $(this).attr('method');
-    // var form_action = $(this).attr('action');
-    //
-    //
-    // $.ajax(form_action, {
-    //   type: form_method,
-    //   dataType: 'script',
-    //   data: $(this).serialize()
-    // })
-  });
+  $('form').submit(function(event){
+    event.preventDefault();
+  })
+
+  // Abstracted away to use generalized form - create exercise form
+  // $('#exercise-form').submit(function(event){
+  //   event.preventDefault();
+  //
+  //   // REMOVED TO UTILIZE REMOTE TRUE
+  //   // var form_method = $(this).attr('method');
+  //   // var form_action = $(this).attr('action');
+  //   //
+  //   //
+  //   // $.ajax(form_action, {
+  //   //   type: form_method,
+  //   //   dataType: 'script',
+  //   //   data: $(this).serialize()
+  //   // })
+  // });
+
+  // Abstracted away to use generalized form - edit workout form
+  // $('form.edit_workout').submit(function(event){
+  //   event.preventDefault();
+  // })
 
   $('tbody td a').click(function(event){
     event.preventDefault();
@@ -43,20 +54,12 @@ function attachListeners(){
   });
 
   $('a.edit-link').click(function(){
-
     var workoutId = $(this).parents('tr').data('workout-id')
     var workoutRow = $('tr[data-workout-id="' + workoutId + '"]')
 
+    // Hide plain text workout row and display edit workout input form
     $('span', workoutRow).addClass('hide-row');
     $('input', workoutRow).attr('id', 'edit-workout')
-
-  });
-
-  $(document).keypress(function(e) {
-    if(e.which == 13) {
-      debugger;
-        alert('You pressed enter!');
-    }
   });
 }
 

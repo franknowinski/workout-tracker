@@ -2,7 +2,7 @@
   <h2 id=workout-plan-name><%= @workout_plan.name %></h2>
 
   <h4 id="workout-plan-links">
-    <%= link_to 'Delete Workout Plan', destroy_workout_plan_path(current_user.current_plan), method: :delete %>
+    <%= link_to 'Delete Workout Plan', destroy_workout_plan_path(@workout_plan), method: :delete %>
   </h4>
 
   <% @workout_plan.all_muscle_groups.each do |muscle| %>

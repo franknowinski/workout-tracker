@@ -1,0 +1,26 @@
+var workoutId = <%= @workout.id %>
+
+// Assign inputed values to be updated to variables
+var workoutName = $('input.' + workoutId +'-name').val();
+var workoutSets = $('input.' + workoutId +'-sets').val();
+var workoutReps = $('input.' + workoutId +'-reps').val();
+
+
+// Display new workout values in DOM
+$('span[data-workout-name="' + workoutId + '"]').text(workoutName)
+$('span[data-workout-name="' + workoutId + '"]').toggleClass('hide-row')
+
+
+$('span[data-workout-sets="' + workoutId + '"]').text(workoutSets)
+$('span[data-workout-sets="' + workoutId + '"]').toggleClass('hide-row')
+
+$('span[data-workout-reps="' + workoutId + '"]').text(workoutReps)
+$('span[data-workout-reps="' + workoutId + '"]').toggleClass('hide-row')
+
+// $('span.' + workoutId + '-sets').text(workoutSets)
+// $('span.' + workoutId + '-sets').removeClass('hide-row')
+
+// Remove input fields from DOM
+$('input.' + workoutId +'-name').removeAttr('id')
+$('input.' + workoutId +'-sets').removeAttr('id')
+$('input.' + workoutId +'-reps').removeAttr('id')

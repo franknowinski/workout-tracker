@@ -1,10 +1,12 @@
 var muscleGroupId = $('#exercise_muscle_group_id').val()
 
+// Either create a new muscle group table w/ workouts or add a row to an existing table
 if ($('[data-muscle-group-id="' + muscleGroupId + '"]').length == 0){
   $('#workout-plan-table').append("<%= j render 'table', exercise: @exercise %>");
 } else {
-  $('.<%= @exercise.muscle_group.name.downcase %>-group div.col-sm-8 tbody').append("<%= j render 'table_row', exercise: @exercise %>");
+  $('.<%= @exercise.muscle_group.name.downcase %>-group div.col-sm-8 tbody').append("<%= j render 'table_rows', exercise: @exercise %>");
 }
 
+// Clear form fields
 $('#exercise-form input.form-control').val('');
 $('#exercise_muscle_group_id').val('')

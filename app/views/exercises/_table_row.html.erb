@@ -1,7 +1,0 @@
-<tr data-muscle-group-id="<%= exercise.muscle_group.id %>">
-  <td><%= exercise.workouts.first.name %></td>
-  <td><%= exercise.workouts.first.sets %></td>
-  <td><%= exercise.workouts.first.reps %></td>
-  <td><%= link_to 'Edit', edit_workout_plan_workout_path(current_user.current_plan, exercise.workouts.first) %></td>
-  <td><%= link_to 'X', workout_plan_destroy_workout_path(exercise.workout_plan, exercise.workouts.first), method: :delete %></td>
-</tr>

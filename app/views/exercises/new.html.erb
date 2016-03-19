@@ -1,8 +1,10 @@
+<!-- Left section -->
 <div class="row">
   <div class="col-sm-7" id="workout-plan-table">
     <%= render @workout_plan %>
   </div>
 
+<!-- Right section -->
   <div class="form-group col-sm-4" id="new-exercise-form">
     <%= form_for @exercise, :url => url_for(:controller => 'exercises', :action => 'create'), :html => {:id => "exercise-form"}, remote: true do |f| %>
       <%= render "form", f: f %><br>
