@@ -4,17 +4,17 @@
     <%= form_for [exercise.workout_plan, workout], remote: :true do |f| %>
       <td>
         <span data-workout-name="<%= workout.id %>"><%= workout.name %></span>
-        <%= f.text_field :name, {class: "form-control #{workout.id}-name", value: workout.name} %>
+        <%= f.text_field :name, {class: "form-control #{workout.id}-name"}%>
       </td>
 
       <td>
         <span data-workout-sets="<%= workout.id %>"><%= workout.sets %></span>
-        <%= f.text_field :sets, {class: "form-control #{workout.id}-sets", value: workout.sets} %>
+        <%= f.text_field :sets, {class: "form-control #{workout.id}-sets"} %>
       </td>
 
       <td>
         <span data-workout-reps="<%= workout.id %>"><%= workout.reps %></span>
-        <%= f.text_field :reps, {class: "form-control #{workout.id}-reps", value: workout.reps } %>
+        <%= f.text_field :reps, {class: "form-control #{workout.id}-reps"} %>
       </td>
       <%= f.submit style: 'display: none;' %>
     <% end %>

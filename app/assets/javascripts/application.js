@@ -53,13 +53,20 @@ function attachListeners(){
     // })
   });
 
-  $('a.edit-link').click(function(){
-    var workoutId = $(this).parents('tr').data('workout-id')
-    var workoutRow = $('tr[data-workout-id="' + workoutId + '"]')
+  $('tbody').on('click', 'a.edit-link', function(){
+    var workoutRow = $(this).parents('tr')
 
-    // Hide plain text workout row and display edit workout input form
+    // Hide workout values and display edit workout input form
     $('span', workoutRow).addClass('hide-row');
     $('input', workoutRow).attr('id', 'edit-workout')
+  });
+
+  $('tbody').on('blur', 'a.edit-link', function(){
+    var workoutRow = $(this).parents('tr')
+
+    // Display workout values and hide edit workout input form
+    $('span', workoutRow).removeClass('hide-row');
+    $('input', workoutRow).removeAttr('id');
   });
 }
 
