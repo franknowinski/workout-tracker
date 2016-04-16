@@ -18,11 +18,8 @@ class ExercisesController < ApplicationController
         format.html { render :new }
         format.js { }
       else
-        # format.html { render action: 'new' }
         format.html { render action: :new }
         format.js { render json: @exercise.errors }
-        # format.json { render json: { error: @exercise.errors }, status: 422 }
-        # render new_workout_plan_exercise_path(current_plan)
       end
     end
 

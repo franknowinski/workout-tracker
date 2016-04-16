@@ -14,7 +14,11 @@ class WorkoutPlan < ActiveRecord::Base
   }
 
   def all_muscle_groups
-    self.exercises.collect{ |exercise| exercise.muscle_group.name.downcase }.uniq
+    available_muscle_groups.collect{ |exercise| exercise.muscle_group.name.downcase }.uniq
+  end
+
+  def available_muscle_groups
+    self.exercises.select{ |exercise| !exercise.workouts.blank? }
   end
 
   def muscle_group_by(name)

@@ -19,15 +19,15 @@ function attachListeners(){
     event.preventDefault();
   })
 
+  // Clear error messages after a successful request
   $('#new_exercise').bind("ajax:success", function(evt, xhr, status, error){
     $('div.field_with_errors').html("");
   });
 
+  // Display error messages
   $('#new_exercise').bind("ajax:error", function(evt, xhr, status, error){
 
-    var $form = $(this),
-        errorText = '',
-        errors;
+    var $form = $(this), errorText = '', errors;
     try {
       // Populate errorText with the comment errors
       errors = $.parseJSON(xhr.responseText);
@@ -35,21 +35,11 @@ function attachListeners(){
       // If the responseText is not valid JSON (like if a 500 exception was thrown), populate errors with a generic error message.
       errors = {message: "Please reload the page and try again"};
     }
-
-    // Build an unordered list from the list of errors
-    // errorText = "There were errors with the submission: \n<ul>";
-
     for ( error in errors ) {
-      errorText += "\n<ul><li>" + errors[error] + "</li> ";
+      errorText += "<li>" + errors[error] + "</li>";
     }
-
-    errorText += "</ul>";
-
     $form.find('div.field_with_errors').html(errorText);
-
-    // $form.find('div.validation-error').html(errorText);
   });
-
 
   // Abstracted away to use Remote True - create exercise form
   // $('#new_exercise').submit(function(event){
@@ -81,7 +71,7 @@ function attachListeners(){
 
   $('tbody').on('click', 'a.edit-link', function(){
     var workoutRow = $(this).parents('tr')
-    // $('input[name="workout[name]"]').focus()
+
     // Hide workout values and display edit workout input form
     $('span', workoutRow).addClass('hide-row');
     $('input', workoutRow).attr('id', 'edit-workout')
