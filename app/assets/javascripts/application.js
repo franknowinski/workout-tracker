@@ -19,11 +19,15 @@ function attachListeners(){
     event.preventDefault();
   })
 
+  $('#new_exercise').bind("ajax:success", function(evt, xhr, status, error){
+    $('div.field_with_errors').html("");
+  });
+
   $('#new_exercise').bind("ajax:error", function(evt, xhr, status, error){
 
     var $form = $(this),
-        errors,
-        errorText;
+        errorText = '',
+        errors;
     try {
       // Populate errorText with the comment errors
       errors = $.parseJSON(xhr.responseText);
@@ -33,10 +37,10 @@ function attachListeners(){
     }
 
     // Build an unordered list from the list of errors
-    errorText = "There were errors with the submission: \n<ul>";
+    // errorText = "There were errors with the submission: \n<ul>";
 
     for ( error in errors ) {
-      errorText += "<li>" + error + ': ' + errors[error] + "</li> ";
+      errorText += "\n<ul><li>" + errors[error] + "</li> ";
     }
 
     errorText += "</ul>";

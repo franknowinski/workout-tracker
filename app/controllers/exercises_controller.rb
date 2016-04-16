@@ -19,8 +19,8 @@ class ExercisesController < ApplicationController
         format.js { }
       else
         # format.html { render action: 'new' }
-        format.html { redirect_to new_workout_plan_exercise_path(current_plan), notice: 'Failed' }
-        format.js { render json: @exercise.errors}
+        format.html { render action: :new }
+        format.js { render json: @exercise.errors }
         # format.json { render json: { error: @exercise.errors }, status: 422 }
         # render new_workout_plan_exercise_path(current_plan)
       end
