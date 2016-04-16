@@ -12,10 +12,6 @@
 
 <p><%= label_tag 'Select the muscle group you would like to create a workout for:' %></p>
 
-<% if @exercise.errors.any? %>
-  <%= render 'error_messages' %>
-<% end %>
-
 <p><%= f.collection_select :muscle_group_id, MuscleGroup.all, :id, :name, include_blank: 'Select' %>
 </p><br>
 
