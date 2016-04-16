@@ -6,7 +6,6 @@ $(function(){
   var workoutSets = $('input.' + workoutId +'-sets').val();
   var workoutReps = $('input.' + workoutId +'-reps').val();
 
-
   // Display new workout values in DOM
   $('span[data-workout-name="' + workoutId + '"]').text(workoutName);
   $('span[data-workout-name="' + workoutId + '"]').toggleClass('hide-row');
