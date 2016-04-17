@@ -9,17 +9,23 @@
 
       <td>
         <span data-workout-sets="<%= workout.id %>"><%= workout.sets %></span>
-        <%= f.text_field :sets, {class: "form-control #{workout.id}-sets"} %>
+        <%= f.text_field :sets, class: "form-control #{workout.id}-sets" %>
       </td>
 
       <td>
         <span data-workout-reps="<%= workout.id %>"><%= workout.reps %></span>
-        <%= f.text_field :reps, {class: "form-control #{workout.id}-reps"} %>
+        <%= f.text_field :reps, class: "form-control #{workout.id}-reps" %>
       </td>
+      <td>
+        <%= f.check_box :completed, data: { workout_id: "#{workout.id}", workout_plan: "#{workout.exercise.workout_plan.id}" }, remote: true %>
+      </td>
+
       <%= f.submit style: 'display: none;' %>
     <% end %>
 
-    <td><%= link_to 'Edit', edit_workout_plan_workout_path(current_user.current_plan, workout), class: 'edit-link', remote: :true %></td>
+    <td><%= link_to 'Edit', edit_workout_plan_workout_path(workout.exercise.workout_plan, workout), class: 'edit-link', remote: :true %></td>
     <td><%= link_to 'X', workout_plan_destroy_workout_path(workout.exercise.workout_plan, workout), data: {id: workout.id}, method: :delete, remote: :true %></td>
+    <td>
+  </td>
   </tr>
 <% end %>

@@ -13,6 +13,7 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 gem 'devise'
 gem 'omniauth-facebook'
 gem 'bootstrap-sass', '~> 3.3.6'
+gem 'dotenv-rails', :groups => [:development, :test]
 
 group :development, :test do
   gem "rspec-rails"

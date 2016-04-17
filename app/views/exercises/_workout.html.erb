@@ -1,13 +1,5 @@
 <table class="table table-hover clearfix">
-  <thead>
-    <tr>
-      <th class="col-sm-3">Exercise</th>
-      <th class="col-sm-2">Sets</th>
-      <th class="col-sm-2">Reps</th>
-      <th class="col-sm-2">Edit</th>
-      <th class="col-sm-2">Delete</th>
-    </tr>
-  </thead>
+  <%= render 'table_head' %>
   <tbody>
     <% @workout_plan.muscle_group_by(muscle).each do |exercise| %>
       <%= render 'table_rows', exercise: exercise %>

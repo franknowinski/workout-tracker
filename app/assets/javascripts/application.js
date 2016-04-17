@@ -19,7 +19,7 @@ function attachListeners(){
     event.preventDefault();
   })
 
-  // Clear error messages after a successful request
+  // Clear validation error messages after successful request
   $('#new_exercise').bind("ajax:success", function(evt, xhr, status, error){
     $('div.field_with_errors').html("");
   });
@@ -51,8 +51,6 @@ function attachListeners(){
   //     type: form_method,
   //     dataType: 'script',
   //     data: $(this).serialize()
-  //   }).error(function(res){
-  //     debugger;
   //   })
   // });
 
@@ -84,6 +82,20 @@ function attachListeners(){
   //   $('span', workoutRow).removeClass('hide-row');
   //   $('input', workoutRow).removeAttr('id');
   // });
+
+  $('#workout_completed').click(function(){
+    var workoutPlan = $(this).data('workout-plan'),
+      workout = $(this).data('workout-id'),
+      url = "/workout_plans/" + workoutPlan + "/workouts/" + workout;
+
+    $.ajax(url, {
+      type: 'PATCH',
+      dataType: 'script',
+      data: $(this).serialize()
+    }).error(function(res){
+      debugger;
+    })
+  });
 }
 
 $(function(){
