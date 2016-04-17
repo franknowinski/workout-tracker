@@ -1,6 +1,6 @@
 Questions
 
-1. Fix validations for when a workout doesn't have all three fields.
+1. Change sign in route to workout plans index page.
 
 circuit
   "Upper Body Free Weights"

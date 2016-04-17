@@ -3,6 +3,7 @@ class WorkoutPlansController < ApplicationController
   before_action :set_workout_plan, only: [:show, :edit, :update, :destroy]
 
   def index
+    @all_workout_plans = WorkoutPlan.all.select{ |x| x.user_id != current_user.id }
     @workout_plans = current_user.workout_plans
   end
 

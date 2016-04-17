@@ -1,5 +1,5 @@
 body {
-  text-shadow: 0px 1px 0px lightgray;
+  background-color: #EEEEEE;
 }
 
 .btn {
@@ -7,14 +7,11 @@ body {
 }
 
 /* NAVBAR */
-
 #navbar {
-  padding: 20px;
-}
-
-#navbar-display li {
-  margin-left: 70px;
-  padding: 10px;
+  margin-left: -17px;
+  margin-right: -17px;
+  margin-top: -2px;
+  background-color: rgba(0, 143, 179, 1.2);
 }
 
 #signup-buttons {
@@ -23,8 +20,17 @@ body {
 }
 
 #navbar ul li {
+  margin-left: 100px;
   margin-right: 30px;
-  font-size: 1.4em;
+  font-size: 1.5em;
+  font-weight: 200;
+  a {
+    color: white;
+  }
+  a:hover {
+    background-color: white;
+    color: rgba(0, 143, 179, 1);
+  }
 }
 
 /* FACEBOOK BUTTON */
@@ -34,7 +40,7 @@ body {
   color: white;
 }
 
-.btn-facebook:hover{
+.btn-facebook:hover {
   color: white;
   background-color: #2F487A;
 }
@@ -46,6 +52,8 @@ body {
 }
 
 .signup-header {
+  color: rgba(0, 143, 179, 1.2);
+  text-shadow: 0px 1px 1px lightgray;
   margin-top: 70px;
 }
 
@@ -53,7 +61,8 @@ body {
 
 #hompage-header {
   text-align: center;
-  color: rgb(48, 122, 185);
+  color: rgba(0, 143, 179, 1.2);
+  font-weight: 200;
   text-shadow: 0px 1px 1px lightgray;
   margin-top: 120px;
 }
@@ -62,6 +71,7 @@ body {
 
 .field_with_errors {
   color: red;
+  font-size: 14px;
 }
 
 #flash_alert {

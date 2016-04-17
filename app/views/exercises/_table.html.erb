@@ -16,31 +16,7 @@
       </thead>
       <tbody>
         <% exercise.workout_plan.muscle_group_by(exercise.muscle_group.name.downcase).each do |exercise| %>
-          <% exercise.workouts.each do |workout| %>
-            <tr class="workout-rows" data-muscle-group-id="<%= exercise.muscle_group.id %>" data-workout-id="<%= workout.id %>">
-
-              <%= form_for [exercise.workout_plan, workout], remote: :true do |f| %>
-                <td>
-                  <span data-workout-name="<%= workout.id %>"><%= workout.name %></span>
-                  <%= f.text_field :name, {class: "form-control #{workout.id}-name", value: workout.name} %>
-                </td>
-
-                <td>
-                  <span data-workout-sets="<%= workout.id %>"><%= workout.sets %></span>
-                  <%= f.text_field :sets, {class: "form-control #{workout.id}-sets", value: workout.sets} %>
-                </td>
-
-                <td>
-                  <span data-workout-reps="<%= workout.id %>"><%= workout.reps %></span>
-                  <%= f.text_field :reps, {class: "form-control #{workout.id}-reps", value: workout.reps} %>
-                </td>
-                <%= f.submit style: 'display: none;' %>
-              <% end %>
-
-              <td><%= link_to 'Edit', edit_workout_plan_workout_path(current_user.current_plan, workout) %></td>
-              <td><%= link_to 'X', workout_plan_destroy_workout_path(workout.exercise.workout_plan, workout), data: {id: workout.id }, method: :delete, remote: :true %></td>
-            </tr>
-          <% end %>
+          <%= render 'table_rows', exercise: exercise %>
         <% end %>
       </tbody>
     </table>

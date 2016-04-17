@@ -20,6 +20,6 @@
     <% end %>
 
     <td><%= link_to 'Edit', edit_workout_plan_workout_path(current_user.current_plan, workout), class: 'edit-link', remote: :true %></td>
-    <td><%= link_to 'X', workout_plan_destroy_workout_path(workout.exercise.workout_plan, workout), data: {id: workout.id }, method: :delete, remote: :true %></td>
+    <td><%= link_to 'X', workout_plan_destroy_workout_path(workout.exercise.workout_plan, workout), data: {id: workout.id}, method: :delete, remote: :true %></td>
   </tr>
 <% end %>

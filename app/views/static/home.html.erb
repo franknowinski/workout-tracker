@@ -1,5 +1,7 @@
-<h1 id="hompage-header">Welcome to your personal Workout Tracker<%= " " + current_user.user_name if current_user %>!</h1><br><br>
+<div>
+  <h1 id="hompage-header">Welcome to your personal Workout Tracker<%= " " + current_user.user_name if current_user %>!</h1><br><br>
 
-<% if !user_signed_in? %>
-  <%= render '/layouts/signin_nav' %>
-<% end %>
+  <% if !user_signed_in? %>
+    <%= render '/layouts/signin_nav' %>
+  <% end %>
+</div>

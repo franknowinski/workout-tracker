@@ -1,14 +1,8 @@
-<div class="field_with_errors">
-  <ul id="errors">
-    <% @exercise.errors.full_messages.each do |msg| %>
-      <li><%= msg %></li>
-    <% end %>
-  </ul>
-</div>
-
 <% if @workout_plan.name.nil? %>
   <%= render 'workout_plan_name' %>
 <% end %>
+
+<%= render 'error_messages' %>
 
 <p><%= label_tag 'Select the muscle group you would like to create a workout for:' %></p>
 
