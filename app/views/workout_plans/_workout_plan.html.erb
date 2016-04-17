@@ -1,14 +1,17 @@
-<% if @workout_plan.exercises.count > 0 %>
+<div class="">
+
+</div>
+<% if @workout_plan.exercises.present? %>
   <h2 id=workout-plan-name><%= @workout_plan.name %></h2>
 
   <h4 id="workout-plan-links">
     <%= link_to 'Delete Workout Plan', destroy_workout_plan_path(@workout_plan), method: :delete %>
-  </h4>
+  </h4><hr>
 
   <% @workout_plan.all_muscle_groups.each do |muscle| %>
     <div class="row <%= muscle %>-group">
       <div class="container col-sm-3">
-        <h2><%= muscle.capitalize %></h2><br>
+        <h2 id="table-muscle-header"><%= muscle.capitalize %></h2><br>
       </div>
       <div class="col-sm-8">
         <%= render 'workout', muscle: muscle %>

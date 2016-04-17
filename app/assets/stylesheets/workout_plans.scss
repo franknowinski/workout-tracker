@@ -4,18 +4,36 @@
 
 #workout-plan-name {
   text-align: center;
-  color: rgb(48, 122, 185);
+  color: rgba(0, 143, 179, 1.2);
+  font-weight: 200;
 }
 
 #workout-plan-links {
   text-align: center;
-  padding: 20px;
+  font-size: 1.2em;
+  margin-top: 20px;
+  font-weight: 200;
 }
 
 #workout-plan-table {
-  margin-left: -50px;
-  border-right: 1px solid lightgray;
-  margin-right: 75px;
+  margin-top: 20px;
+  margin-left: -10px;
+  margin-right: 60px;
+  background-color: white;
+  padding: 5px;
+  padding-left: 24px;
+  padding-right: 24px;
+  box-shadow: -1px 2px 2px gray;
+  border-radius: 5px;
+  font-weight: 300;
+  label {
+    font-weight: 400;
+  }
+}
+
+#table-muscle-header {
+  color: rgba(0, 143, 179, 1);
+  font-weight: 200;
 }
 
 /* WORKOUT PLANS INDEX */
@@ -37,6 +55,7 @@
 .workout-plan-item {
   font-weight: 200;
   font-size: 1.6em;
+  color: rgba(0, 143, 179, 1.2);
   a {
     color: rgba(0, 143, 179, 1.2);
   }

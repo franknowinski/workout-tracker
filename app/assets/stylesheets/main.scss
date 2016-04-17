@@ -1,5 +1,12 @@
 body {
   background-color: #EEEEEE;
+  a {
+    color: rgba(0, 143, 179, 1);
+  }
+  a:hover {
+    color: black;
+    text-decoration: none;
+  }
 }
 
 .btn {

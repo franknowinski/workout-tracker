@@ -1,22 +1,23 @@
-<div class="field_with_errors">
-  <ul id="errors">
-    <% @exercise.errors.full_messages.each do |msg| %>
-      <li><%= msg %></li>
-    <% end %>
-  </ul>
-</div>
-
-<!-- Left section -->
-<div class="row">
-  <div class="col-sm-7" id="workout-plan-table">
-    <%= render @workout_plan %>
+  <div class="field_with_errors">
+    <ul id="errors">
+      <% @exercise.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+    </ul>
   </div>
 
-<!-- Right section -->
-  <div class="form-group col-sm-4" id="new-exercise-form">
-    <%= form_for @exercise, :url => url_for(:controller => 'exercises', :action => 'create'), remote: true do |f| %>
-      <%= render "form", f: f %><br>
-      <%= f.submit 'Create Exercises', class: 'btn btn-primary' %>
-    <% end %>
+  <!-- Left section -->
+  <div class="row">
+    <div class="col-sm-7" id="workout-plan-table">
+      <%= render @workout_plan %>
+    </div>
+
+  <!-- Right section -->
+    <div class="form-group col-sm-4" id="new-exercise-form">
+      <%= form_for @exercise, :url => url_for(:controller => 'exercises', :action => 'create'), remote: true do |f| %>
+        <%= render "form", f: f %><br>
+        <%= f.submit 'Create Exercises', class: 'btn btn-primary' %>
+      <% end %>
+    </div>
   </div>
 </div>

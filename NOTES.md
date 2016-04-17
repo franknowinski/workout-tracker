@@ -1,6 +1,6 @@
 Questions
 
-1. Change sign in route to workout plans index page.
+1. Remove workout plan name field after creating workout plan.
 
 circuit
   "Upper Body Free Weights"
