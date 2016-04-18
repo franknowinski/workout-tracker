@@ -68,7 +68,7 @@ function attachListeners(){
   });
 
   $('tbody').on('click', 'a.edit-link', function(){
-    var workoutRow = $(this).parents('tr')
+    var workoutRow = $(this).parents('#workout-rows');
 
     // Hide workout values and display edit workout input form
     $('span', workoutRow).addClass('hide-row');
@@ -83,19 +83,19 @@ function attachListeners(){
   //   $('input', workoutRow).removeAttr('id');
   // });
 
-  $('#workout_completed').click(function(){
-    var workoutPlan = $(this).data('workout-plan'),
-      workout = $(this).data('workout-id'),
-      url = "/workout_plans/" + workoutPlan + "/workouts/" + workout;
-
-    $.ajax(url, {
-      type: 'PATCH',
-      dataType: 'script',
-      data: $(this).serialize()
-    }).error(function(res){
-      debugger;
-    })
-  });
+  // $('#workout_completed').click(function(){
+  //   var workoutPlan = $(this).data('workout-plan'),
+  //     workout = $(this).data('workout-id'),
+  //     url = "/workout_plans/" + workoutPlan + "/workouts/" + workout;
+  //
+  //   $.ajax(url, {
+  //     type: 'PATCH',
+  //     dataType: 'script',
+  //     data: $(this).serialize()
+  //   }).error(function(res){
+  //     // debugger;
+  //   })
+  // });
 }
 
 $(function(){

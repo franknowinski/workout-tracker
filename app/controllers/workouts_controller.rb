@@ -6,6 +6,7 @@ class WorkoutsController < ApplicationController
   end
 
   def update
+    @completed = params[:workout][:completed]
     @workout.update(workout_params)
   end
 
@@ -24,7 +25,6 @@ class WorkoutsController < ApplicationController
   end
 
   def workout_params
-    binding.pry
     params.require(:workout).permit(:name, :sets, :reps, :completed)
   end
 end
