@@ -15,9 +15,9 @@
 
 function attachListeners(){
 
-  $('form').submit(function(event){
+  $('.exercise-form').submit(function(event){
     event.preventDefault();
-  })
+  });
 
   // Clear validation error messages after successful request
   $('#new_exercise').bind("ajax:success", function(evt, xhr, status, error){

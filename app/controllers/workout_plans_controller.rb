@@ -1,16 +1,10 @@
 class WorkoutPlansController < ApplicationController
-  before_filter :authenticate_user!, only: [:index, :show, :new, :destroy]
-  before_action :set_workout_plan, only: [:show, :edit, :update, :destroy]
+  before_filter :authenticate_user!, only: [:index, :new, :destroy]
+  before_action :set_workout_plan, only: [:edit, :update, :destroy]
 
   def index
-    @all_workout_plans = WorkoutPlan.all.select{ |x| x.user_id != current_user.id }
+    @all_workout_plans = WorkoutPlan.all.select{ |workout| workout.user_id != current_user.id }
     @workout_plans = current_user.workout_plans
-  end
-
-  def show
-    @exercise = Exercise.new
-    @workout = current_plan if current_plan.name.nil?
-    redirect_to root_path, alert: 'Access Denied' unless @workout_plan.user == current_user
   end
 
   def new

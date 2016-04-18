@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
 
-  resources :workout_plans, only: [:index, :show, :new] do
+  resources :workout_plans, only: [:index, :new] do
     delete '/delete_workout/:id', to: 'workouts#destroy', as: 'destroy_workout'
     resources :exercises, only: [:new, :create]
     resources :workouts, only: [:edit, :update]

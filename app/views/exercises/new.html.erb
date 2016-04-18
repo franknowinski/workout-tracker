@@ -1,3 +1,4 @@
+<% if current_user.workout_plans.exists?(params[:workout_plan_id]) %>
   <div class="field_with_errors">
     <ul id="errors">
       <% @exercise.errors.full_messages.each do |msg| %>
@@ -6,19 +7,31 @@
     </ul>
   </div>
 
-  <!-- Left section -->
   <div class="row">
+    <!-- Left section -->
     <div class="col-sm-7" id="workout-plan-table">
       <%= render @workout_plan %>
       <p id="edit-form-instruction" class="hide-row">Press enter to submit</p>
     </div>
 
-  <!-- Right section -->
-    <div class="form-group col-sm-4" id="new-exercise-form">
+    <!-- Right section -->
+    <div class="form-group col-sm-4 exercise-form" id="new-exercise-form">
       <%= form_for @exercise, :url => url_for(:controller => 'exercises', :action => 'create'), remote: true do |f| %>
         <%= render "form", f: f %><br>
         <%= f.submit 'Create Exercises', class: 'btn btn-primary' %>
       <% end %>
     </div>
   </div>
-</div>
+<% else %>
+  <div class="row">
+    <!-- Left section -->
+    <div class="col-sm-7" id="workout-plan-table">
+      <%= render '/workout_plans/view_workout_plan', workout_plan: @workout_plan %>
+    </div>
+
+    <!-- Right section -->
+    <div id="workout-plan-list-exercise" class="col-sm-4">
+      <%= render '/workout_plans/browse_workouts', all_workout_plans: @all_workout_plans %>
+    </div>
+  </div>
+<% end %>

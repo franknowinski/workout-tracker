@@ -1,7 +1,7 @@
 <% exercise.workouts.each do |workout| %>
   <tr id="workout-rows" class="<%= 'completed' if workout.completed %>" data-muscle-group-id="<%= exercise.muscle_group.id %>" data-workout-id="<%= workout.id %>">
 
-    <%= form_for [exercise.workout_plan, workout], remote: :true do |f| %>
+    <%= form_for [exercise.workout_plan, workout], class: 'exercise-form', remote: :true do |f| %>
       <td>
         <span data-workout-name="<%= workout.id %>"><%= workout.name %></span>
         <%= f.text_field :name, class: "form-control #{workout.id}-name" %>

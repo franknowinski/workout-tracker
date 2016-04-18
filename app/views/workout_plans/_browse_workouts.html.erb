@@ -1,0 +1,9 @@
+<h2 id="workout-plans-header">Browse Workout Plans</h2><hr><br>
+
+<% if all_workout_plans.blank? %>
+  <h2 class="workout-plan-item">There are no other workouts</h2>
+<% else %>
+  <% all_workout_plans.each do |workout_plan| %>
+    <%= render '/workout_plans/workout_plan_list', workout_plan: workout_plan %>
+  <% end %>
+<% end %>
