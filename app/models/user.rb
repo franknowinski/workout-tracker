@@ -12,11 +12,7 @@ class User < ActiveRecord::Base
   end
 
   def user_name
-    if name
-      name.split(' ').first.capitalize
-    else
-      email.split('@').first.capitalize
-    end
+    name ? name.split(' ').first.capitalize : email.split('@').first.capitalize
   end
 
   def current_plan

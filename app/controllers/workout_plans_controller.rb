@@ -1,5 +1,5 @@
 class WorkoutPlansController < ApplicationController
-  before_filter :authenticate_user!, only: [:index, :new, :destroy]
+  before_filter :authenticate_user!, only: [:new, :destroy]
   before_action :set_workout_plan, only: [:edit, :update, :destroy]
 
   def index

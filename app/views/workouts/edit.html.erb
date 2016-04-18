@@ -1,7 +1,0 @@
-<div class="container form-group" id="new-exercise-form">
-  <h2>Edit workout</h2><br>
-
-  <%= form_for @workout, url: url_for(controller: 'workouts', action: 'update') do |f| %>
-    <%= render 'form', f: f %>
-  <% end %>
-</div>
