@@ -15,10 +15,6 @@
 
 function attachListeners(){
 
-  $('.exercise-form').submit(function(event){
-    event.preventDefault();
-  });
-
   // Clear validation error messages after successful request
   $('#new_exercise').bind("ajax:success", function(evt, xhr, status, error){
     $('div.field_with_errors').html("");
@@ -41,8 +37,17 @@ function attachListeners(){
     $form.find('div.field_with_errors').html(errorText);
   });
 
+  $('tbody').on('click', 'a.edit-link', function(){
+    var workoutRow = $(this).parents('#workout-rows');
+
+    // Hide workout values and display edit workout input form
+    $('span', workoutRow).addClass('hide-row');
+    $('#edit-form-instruction').removeClass('hide-row');
+    $('input', workoutRow).attr('id', 'edit-workout');
+  });
+
   // Abstracted away to use Remote True - create exercise form
-  // $('#new_exercise').submit(function(event){
+  // $('.exercise-form').submit(function(event){
   //   event.preventDefault();
   //   var form_method = $(this).attr('method');
   //   var form_action = $(this).attr('action');
@@ -54,27 +59,18 @@ function attachListeners(){
   //   })
   // });
 
-  $('tbody td a').click(function(event){
-    event.preventDefault();
-
-    // REMOVED TO USE REMOTE TRUE
-    // var method = $(this).data('method');
-    // var deleteURL = $(this).attr('href');
-    //
-    // $.ajax(deleteURL, {
-    //   type: method,
-    //   dataType: 'script',
-    // })
-  });
-
-  $('tbody').on('click', 'a.edit-link', function(){
-    var workoutRow = $(this).parents('#workout-rows');
-
-    // Hide workout values and display edit workout input form
-    $('span', workoutRow).addClass('hide-row');
-    $('#edit-form-instruction').removeClass('hide-row');
-    $('input', workoutRow).attr('id', 'edit-workout');
-  });
+  // $('tbody td a').click(function(event){
+  //   event.preventDefault();
+  //
+  //   // REMOVED TO USE REMOTE TRUE
+  //   // var method = $(this).data('method');
+  //   // var deleteURL = $(this).attr('href');
+  //   //
+  //   // $.ajax(deleteURL, {
+  //   //   type: method,
+  //   //   dataType: 'script',
+  //   // })
+  // });
 
   // $('tbody').on('blur', 'a.edit-link', function(){
   //   var workoutRow = $(this).parents('tr')

@@ -2,9 +2,6 @@ class ExercisesController < ApplicationController
   before_filter :authenticate_user!, only: [:new, :create]
 
   def new
-    # if !current_user.workout_plans.exists?(params[:workout_plan_id])
-    #   redirect_to root_path, alert: 'Access Denied'
-    # end
     @exercise = Exercise.new
     @workout_plan = WorkoutPlan.find(params[:workout_plan_id])
     @all_workout_plans = WorkoutPlan.all.select{ |workout| workout.user_id != current_user.id }

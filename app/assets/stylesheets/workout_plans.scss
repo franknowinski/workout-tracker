@@ -2,9 +2,11 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
+// Workout Plan Table
+
 #workout-plan-name {
   text-align: center;
-  color: rgba(0, 143, 179, 1.2);
+  color: rgba(0, 143, 179, 1);
   font-weight: 200;
 }
 
@@ -16,13 +18,9 @@
 }
 
 #workout-plan-table {
-  margin-top: 20px;
-  margin-left: -10px;
-  margin-right: 60px;
+  margin: 20px 60px 0px -10px;
   background-color: white;
-  padding: 5px;
-  padding-left: 24px;
-  padding-right: 24px;
+  padding: 5px 29px 5px;
   box-shadow: -1px 2px 2px gray;
   border-radius: 5px;
   font-weight: 300;
@@ -59,8 +57,7 @@
   border-radius: 5px;
   margin-top: 20px;
   width: 435px;
-  padding-left: 15px;
-  padding-right: 15px;
+  padding: 0px 15px;
 }
 
 .workout-plan-item {

@@ -9,5 +9,6 @@ Rails.application.routes.draw do
   delete '/delete_workout_plan/:id', to: 'workout_plans#destroy', as: 'destroy_workout_plan'
 
   devise_for :users, :controllers => { :omniauth_callbacks => "users/omniauth_callbacks" }
+  # root 'workout_plan#index'
   root 'static#home'
 end

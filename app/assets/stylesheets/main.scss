@@ -9,16 +9,11 @@ body {
   }
 }
 
-.btn {
-  text-shadow: 0 0 0;
-}
-
 /* NAVBAR */
+
 #navbar {
-  margin-left: -17px;
-  margin-right: -17px;
-  margin-top: -2px;
-  background-color: rgba(0, 143, 179, 1.2);
+  margin: -2px -17px 0px;
+  background-color: rgba(0, 143, 179, 1);
 }
 
 #signup-buttons {
@@ -68,43 +63,22 @@ body {
 
 #hompage-header {
   text-align: center;
-  color: rgba(0, 143, 179, 1.2);
+  color: rgba(0, 143, 179, 1);
   font-weight: 200;
   text-shadow: 0px 1px 1px lightgray;
   margin-top: 120px;
 }
 
-/* ERROR MESSAGES */
-
-.field_with_errors {
-  color: red;
-  font-size: 14px;
-}
-
 #flash_alert {
   margin-top: 20px;
-  color:red;
+  color: red;
   text-align: center;
-  font-size: 1.3em;
+  font-size: 1.0em;
 }
 
 #flash_notice {
   margin-top: 20px;
   color: green;
   text-align: center;
-  font-size: 1.3em;
-}
-
-/* Edit Workout */
-
-#workout-rows input#edit-workout {
-  display: block;
-}
-
-.hide-row {
-  display: none;
-}
-
-#workout-rows input.form-control {
-  display: none;
+  font-size: 1.0em;
 }
