@@ -13,17 +13,13 @@ function undoCompletion(workoutId){
 $(function(){
   var workoutId = <%= @workout.id %>;
 
-  if (<%= @completed == '1' %>) {
-    completeWorkout(workoutId);
-  } else {
-    undoCompletion(workoutId);
-  }
+  // Adds the completed class to the workout if it's completed
+  <%= @completed == '1' %> ? completeWorkout(workoutId) : undoCompletion(workoutId);
 
   // Assign updated workout values to variables
   var workoutName = $('input.' + workoutId +'-name').val();
   var workoutSets = $('input.' + workoutId +'-sets').val();
   var workoutReps = $('input.' + workoutId +'-reps').val();
-  // var completeWorkout = $('input.' + workoutId +'-finish');
 
   // Display new workout values in DOM
   $('span[data-workout-name="' + workoutId + '"]').text(workoutName);
@@ -39,4 +35,5 @@ $(function(){
   $('input.' + workoutId +'-name').removeAttr('id');
   $('input.' + workoutId +'-sets').removeAttr('id');
   $('input.' + workoutId +'-reps').removeAttr('id');
+  $('#edit-form-instruction').addClass('hide-row');
 });

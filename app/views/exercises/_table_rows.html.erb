@@ -4,7 +4,7 @@
     <%= form_for [exercise.workout_plan, workout], remote: :true do |f| %>
       <td>
         <span data-workout-name="<%= workout.id %>"><%= workout.name %></span>
-        <%= f.text_field :name, {class: "form-control #{workout.id}-name"}%>
+        <%= f.text_field :name, class: "form-control #{workout.id}-name" %>
       </td>
 
       <td>
@@ -21,10 +21,14 @@
       </td>
 
       <%= f.submit style: 'display: none;' %>
-    <% end %>
-    <% unless workout.completed %>
-      <td><%= link_to 'Edit', edit_workout_plan_workout_path(workout.exercise.workout_plan, workout), class: "edit-link #{workout.id}-edit", remote: :true %></td>
-      <td><%= link_to 'X', workout_plan_destroy_workout_path(workout.exercise.workout_plan, workout), data: {id: workout.id}, method: :delete, remote: :true, class: "#{workout.id}-delete" %></td>
+
+      <% unless workout.completed %>
+        <td><%= link_to 'Edit', edit_workout_plan_workout_path(workout.exercise.workout_plan, workout), class: "edit-link #{workout.id}-edit", remote: :true %></td>
+        <td><%= link_to 'X', workout_plan_destroy_workout_path(workout.exercise.workout_plan, workout), data: {id: workout.id}, method: :delete, remote: :true, class: "#{workout.id}-delete" %></td>
+      <% else %>
+        <!-- So the table border is the width of the row -->
+        <td></td><td></td>
+      <% end %>
     <% end %>
   </tr>
 <% end %>

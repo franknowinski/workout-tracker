@@ -57,7 +57,7 @@ function attachListeners(){
   $('tbody td a').click(function(event){
     event.preventDefault();
 
-    // REMOVED TO USER REMOTE TRUE
+    // REMOVED TO USE REMOTE TRUE
     // var method = $(this).data('method');
     // var deleteURL = $(this).attr('href');
     //
@@ -72,7 +72,8 @@ function attachListeners(){
 
     // Hide workout values and display edit workout input form
     $('span', workoutRow).addClass('hide-row');
-    $('input', workoutRow).attr('id', 'edit-workout')
+    $('#edit-form-instruction').removeClass('hide-row');
+    $('input', workoutRow).attr('id', 'edit-workout');
   });
 
   // $('tbody').on('blur', 'a.edit-link', function(){
@@ -81,20 +82,6 @@ function attachListeners(){
   //   // Display workout values and hide edit workout input form
   //   $('span', workoutRow).removeClass('hide-row');
   //   $('input', workoutRow).removeAttr('id');
-  // });
-
-  // $('#workout_completed').click(function(){
-  //   var workoutPlan = $(this).data('workout-plan'),
-  //     workout = $(this).data('workout-id'),
-  //     url = "/workout_plans/" + workoutPlan + "/workouts/" + workout;
-  //
-  //   $.ajax(url, {
-  //     type: 'PATCH',
-  //     dataType: 'script',
-  //     data: $(this).serialize()
-  //   }).error(function(res){
-  //     // debugger;
-  //   })
   // });
 }
 
