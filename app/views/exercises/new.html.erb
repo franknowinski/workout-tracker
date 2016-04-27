@@ -16,7 +16,7 @@
 
     <!-- Right section -->
     <div class="form-group col-sm-4 exercise-form" id="new-exercise-form">
-      <%= form_for @exercise, :url => url_for(:controller => 'exercises', :action => 'create'), remote: true do |f| %>
+      <%= form_for @exercise, :url => url_for(:controller => 'exercises', :action => 'create') do |f| %>
         <%= render "form", f: f %><br>
         <%= f.submit 'Create Exercises', class: 'btn btn-primary' %>
       <% end %>

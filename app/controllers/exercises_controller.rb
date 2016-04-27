@@ -12,14 +12,14 @@ class ExercisesController < ApplicationController
     @exercise.workout_plan.update(name: params[:workout_plan][:name]) if @exercise.workout_plan.name.nil?
 
     respond_to do |format|
-      if @exercise.save
-        format.html { render :new }
-        format.js { }
-      else
-        format.html { render action: :new }
-        format.js { render json: @exercise.errors }
-      end
-    end
+     if @exercise.save
+       format.html { render :new }
+       format.json { render json: @exercise }
+     else
+       format.html { render :new }
+       format.json { render json: @exercise.errors }
+     end
+   end
 
   end
 
