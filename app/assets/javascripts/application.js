@@ -40,15 +40,6 @@ function attachListeners(){
         contstructTableHead(muscleGroup);
         debugger;
       })
-      // for(var i = 0; i < res.workout_plans.length; i++){
-      //   var exercise = res.workout_plans[i];
-      //   var muscleGroup = exercise.muscle_group;
-      //   var workoutPlan = exercise.workout_plan.name;
-      //   var workouts = exercise.workouts;
-      //
-      //   var html = '<li> ' + muscleGroup.name + ':<br></li>'
-      //   $('.browse-workouts').append(html);
-      // }
 
         // Muscle Group
         // var muscleRow = '<div class="row" id="' + muscleGroup.name + '-group"><div class="container col-sm-3"><h2 id="table-muscle-header" class="browse-plan-muscle">' + muscleGroup.name + '</h2></div>'
