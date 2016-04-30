@@ -1,9 +1,9 @@
 class WorkoutPlansController < ApplicationController
   before_filter :authenticate_user!, only: [:new, :destroy]
   before_action :set_workout_plan, only: [:show, :edit, :update, :destroy]
+  before_action :set_all_workout_plans, only: [:index]
 
   def index
-    @all_workout_plans = WorkoutPlan.all.select{ |workout_plan| workout_plan.user_id != current_user.id }
     @workout_plans = current_user.workout_plans
     respond_to do |format|
       format.html {render :index}
@@ -21,6 +21,13 @@ class WorkoutPlansController < ApplicationController
     respond_to do |format|
       format.html {render :index}
       format.json {render json: @exercises}
+    end
+  end
+
+  def show
+    respond_to do |format|
+      format.html {render :index}
+      format.json {render json: @workout_plan.exercises}
     end
   end
 
@@ -42,5 +49,9 @@ class WorkoutPlansController < ApplicationController
 
   def set_workout_plan
     @workout_plan = WorkoutPlan.find(params[:id])
+  end
+
+  def set_all_workout_plans
+    @all_workout_plans = WorkoutPlan.where.not('user_id': current_user.id)
   end
 end

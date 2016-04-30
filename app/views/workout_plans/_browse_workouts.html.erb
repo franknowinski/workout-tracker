@@ -3,7 +3,7 @@
 <% if all_workout_plans.blank? %>
   <h2 class="workout-plan-item">There are no other workouts</h2>
 <% else %>
-  <div class="browse-plan-container">
-    <ul class="browse-plan-list"></ul>
+  <div id="browse-plan-item">
+    <%= link_to 'Click me to view other workouts!', browse_workout_plans_path, {id: 'browse-workouts-link' } %>
   </div>
 <% end %>

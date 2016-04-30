@@ -1,67 +1,44 @@
-// This is a manifest file that'll be compiled into application.js, which will include all the files
-// listed below.
-//
-// Any JavaScript/Coffee file within this directory, lib/assets/javascripts, vendor/assets/javascripts,
-// or vendor/assets/javascripts of plugins, if any, can be referenced here using a relative path.
-//
-// It's not advisable to add code directly here, but if you do, it'll appear at the bottom of the
-// compiled file.
-//
-// Read Sprockets README (https://github.com/sstephenson/sprockets#sprockets-directives) for details
-// about supported directives.
-//
 //= require jquery
 //= require jquery_ujs
 
-
-function contstructTableHead(muscleGroup) {
+function contstructTable(muscleGroup, workouts) {
   if ($('.' + muscleGroup.name.toLowerCase() + '-group').val() == undefined){
-    var html = '<div class="row ' + muscleGroup.name.toLowerCase() + '-group"><div class="container col-sm-3"><h2 id="table-muscle-header">' + muscleGroup.name + '</h2><br></div>';
+    var muscleHeader ='<div class="row ' + muscleGroup.name.toLowerCase() + '-group"><div class="container col-sm-3"><h2 id="table-muscle-header">' + muscleGroup.name + '</h2><br></div>';
 
-    $('.browse-table').append(html);
+    var workoutsHeader = '<div class="col-sm-8"><table class="table table-hover clearfix"><thead><tr><th class="col-sm-4">Exercise</th><th class="col-sm-3">Sets</th><th class="col-sm-3">Reps</th></tr></thead><tbody></div>';
+
+    var workoutRows = '';
+
+    workouts.forEach(function(workout){
+      workoutRows += '<tr><td>' + workout.name + '</td><td>' + workout.sets + '</td><td>' + workout.reps + '</td></tr>';
+    })
+
+    var html = muscleHeader += workoutsHeader += workoutRows += '</tbody></table></div>';
+
+    $('#browse-table').append(html);
   };
 }
 
+
 function attachListeners(){
 
-  $('.browse-plan-container ').on('click', 'a.browse-workout-plan', function(){
-    event.preventDefault();
-    var url = $(this).attr('href');
-    $.getJSON(url, function(res){
+  $('#browse-plan-item').on('click', 'a.browse-plan-link', function(e){
+    e.preventDefault();
+    var formAction = $(this).attr('href');
+    $('#workout-plans-index').hide();
+    $('div.hidden-table').removeClass('hidden-table');
+    $('#workout-plans-header').html($(this).text());
 
-      res.workout_plans.forEach(function(exercises){
-        var muscleGroup = exercises.muscle_group;
-        var workouts = exercises.workouts;
-        var workoutPlan = exercises.workout_plan;
+    $.getJSON(formAction, function(data){
+      data.workout_plans.forEach(function(workout){
+        var muscleGroup = workout.muscle_group;
+        var workouts = workout.workouts;
+        var workoutPlan = workout.workout_plan;
 
-        // Workout Plan Name
-        $('.browse-plan-header').html(workoutPlan.name);
-
-        contstructTableHead(muscleGroup);
-        debugger;
+        contstructTable(muscleGroup, workouts);
       })
-
-        // Muscle Group
-        // var muscleRow = '<div class="row" id="' + muscleGroup.name + '-group"><div class="container col-sm-3"><h2 id="table-muscle-header" class="browse-plan-muscle">' + muscleGroup.name + '</h2></div>'
-        //
-        // debugger;
-        // $('#workout-plans-header').append(muscleRow);
-        //
-        // '<h2 class="' + muscleGroup.name + '-group" id="table-muscle-header"> ' + muscleGroup.name + '</h2>'
-        // $('.muscle-header').append(muscleGroup.name);
-
-        // Workout Plan Name
-        // $('.browse-plan-header').html(workoutPlan);
-        //
-        // workouts.forEach(function(workout) {
-        //   var workoutRow = "<tr id='workout-rows' data-muscle-group-id=" + muscleGroup.id + "> date-workout-id=" + workout.id + "><td>"+ workout.name + "</td><td>" + workout.sets + "</td><td>" + workout.reps + "</td></tr>";
-        //   // $('.browse-plan-table').append(workoutRow);
-        //   $('.browse-row table tbody').append(workoutRow);
-        // })
     });
-
-  })
-
+  });
 
   // Clear validation error messages after successful request
   $('#new_exercise').bind("ajax:success", function(evt, xhr, status, error){
@@ -85,8 +62,9 @@ function attachListeners(){
     $form.find('div.field_with_errors').html(errorText);
   });
 
-  $('tbody').on('click', 'a.edit-link', function(){
-    var workoutRow = $(this).parents('tr');
+  $('tbody').on('click', 'a.edit-link', function(event){
+    event.preventDefault();
+    var workoutRow = $(this).parents('#workout-rows');
 
     // Hide workout values and display edit workout input form
     $('span', workoutRow).addClass('hide-row');
@@ -94,6 +72,7 @@ function attachListeners(){
     $('input', workoutRow).attr('id', 'edit-workout');
   });
 
+<<<<<<< HEAD
   $('#browse-plans-header').click(function(){
     event.preventDefault();
     var url = $(this).attr('href') + '.json';
@@ -107,34 +86,18 @@ function attachListeners(){
     });
   });
 
-  $('#new_exercise').submit(function(){
-    event.preventDefault();
-    var form_action = $(this).attr('action') + '.json';
+  $('#browse-plan-item #browse-workouts-link').click(function(e){
+    e.preventDefault();
+    var formAction = $(this).attr('href');
 
-    $.post(form_action, $(this).serialize(), function(data){
-      // Get muscle group id
-      var muscleGroupId = $('#exercise_muscle_group_id').val();
+    $.getJSON(formAction, function(data){
+      $('#browse-workouts-link').hide();
 
-      var muscleGroupName = data.exercise.muscle_group.name.toLowerCase();
-      var workouts = data.exercise.workouts;
-      var workoutPlanId = data.exercise.workout_plan.id;
-
-      // Either create a new muscle group table w/ workouts or add a row to an existing table
-      if ($('[data-muscle-group-id="' + muscleGroupId + '"]').length == 0){
-        // $('#workout-plan-table').append("<%= j render 'table', exercise: @exercise %>");
-      } else {
-        // $('.' + muscleGroupName +'-group div.col-sm-8 tbody').append("<%= j render 'table_rows', exercise: @exercise %>");
-        workouts.forEach(function(workout) {
-          var workoutRow = "<tr id='workout-rows'><td>"+ workout.name + "</td><td>" + workout.sets + "</td><td> " + workout.reps + "</td><td><input type='checkbox' id='workout_completed'></td><td><a href='/workout_plans/" + workoutPlanId + "/workouts/" + workout.id + "/edit' class='edit-link' data-remote=true>Edit</a></td></tr>";
-
-          $('.' + muscleGroupName +'-group div.col-sm-8 tbody').append(workoutRow);
-        })
-      }
-
-      // Clear form fields
-      $('#new_exercise input.form-control').val('');
-      $('#exercise_muscle_group_id').val('')
-    })
+      data.browse_workout_plans.forEach(function(workout_plan){
+        var html = '<h4><a href="/workout_plans/' + workout_plan.id + '" class="browse-plan-link">' + workout_plan.name + '</a></h4>'
+        $('#browse-plan-item').append(html);
+      });
+    });
   });
 
   // Abstracted away to use Remote True - create exercise form

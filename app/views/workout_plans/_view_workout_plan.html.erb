@@ -1,9 +1,9 @@
-<h2 id=workout-plan-name><%= @workout_plan.name %></h2><hr>
+<!-- <h2 id=workout-plan-name><%#= @workout_plan.name %></h2><hr> -->
 
-<% @workout_plan.all_muscle_groups.each do |muscle| %>
+<div id="browse-table">
   <div class="row <%= muscle %>-group">
     <div class="container col-sm-3">
-      <h2 id="table-muscle-header"><%= muscle.capitalize %></h2><br>
+      <h2 id="table-muscle-header"><%#= muscle.capitalize %></h2><br>
     </div>
 
     <div class="col-sm-8">
@@ -17,25 +17,25 @@
         </thead>
 
         <tbody>
-          <% @workout_plan.muscle_group_by(muscle).each do |exercise| %>
-            <% exercise.workouts.each do |workout| %>
+          <!-- <%# @workout_plan.muscle_group_by(muscle).each do |exercise| %> -->
+            <%# exercise.workouts.each do |workout| %>
               <tr id="workout-rows" data-muscle-group-id="<%= exercise.muscle_group.id %>" data-workout-id="<%= workout.id %>">
                 <td>
-                  <span data-workout-name="<%= workout.id %>"><%= workout.name %></span>
+                  <span data-workout-name="<%= workout.id %>"><%#= workout.name %></span>
                 </td>
 
                 <td>
-                  <span data-workout-sets="<%= workout.id %>"><%= workout.sets %></span>
+                  <span data-workout-sets="<%= workout.id %>"><%#= workout.sets %></span>
                 </td>
 
                 <td>
-                  <span data-workout-reps="<%= workout.id %>"><%= workout.reps %></span>
+                  <span data-workout-reps="<%= workout.id %>"><%#= workout.reps %></span>
                 </td>
               </tr>
-            <% end %>
-          <% end %>
+            <%# end %>
+          <%# end %>
         </tbody>
       </table>
     </div>
   </div>
-<% end %>
+</div>
