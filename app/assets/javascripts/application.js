@@ -1,7 +1,44 @@
 //= require jquery
 //= require jquery_ujs
 
+function contstructTable(muscleGroup, workouts) {
+  if ($('.' + muscleGroup.name.toLowerCase() + '-group').val() == undefined){
+    var muscleHeader ='<div class="row ' + muscleGroup.name.toLowerCase() + '-group"><div class="container col-sm-3"><h2 id="table-muscle-header">' + muscleGroup.name + '</h2><br></div>';
+
+    var workoutsHeader = '<div class="col-sm-8"><table class="table table-hover clearfix"><thead><tr><th class="col-sm-4">Exercise</th><th class="col-sm-3">Sets</th><th class="col-sm-3">Reps</th></tr></thead><tbody></div>';
+
+    var workoutRows = '';
+
+    workouts.forEach(function(workout){
+      workoutRows += '<tr><td>' + workout.name + '</td><td>' + workout.sets + '</td><td>' + workout.reps + '</td></tr>';
+    })
+
+    var html = muscleHeader += workoutsHeader += workoutRows += '</tbody></table></div>';
+
+    $('#browse-table').append(html);
+  };
+}
+
+
 function attachListeners(){
+
+  $('#browse-plan-item').on('click', 'a.browse-plan-link', function(e){
+    e.preventDefault();
+    var formAction = $(this).attr('href');
+    $('#workout-plans-index').hide();
+    $('div.hidden-table').removeClass('hidden-table');
+    $('#workout-plans-header').html($(this).text());
+
+    $.getJSON(formAction, function(data){
+      data.workout_plans.forEach(function(workout){
+        var muscleGroup = workout.muscle_group;
+        var workouts = workout.workouts;
+        var workoutPlan = workout.workout_plan;
+
+        contstructTable(muscleGroup, workouts);
+      })
+    });
+  });
 
   // Clear validation error messages after successful request
   $('#new_exercise').bind("ajax:success", function(evt, xhr, status, error){
@@ -37,30 +74,15 @@ function attachListeners(){
 
   $('#browse-plan-item #browse-workouts-link').click(function(e){
     e.preventDefault();
-    var formAction = $(this).attr('href') + '.json';
+    var formAction = $(this).attr('href');
 
     $.getJSON(formAction, function(data){
       $('#browse-workouts-link').hide();
 
       data.browse_workout_plans.forEach(function(workout_plan){
-        // var date = new Date(workout_plan.created_at).toString().slice(0,10);
         var html = '<h4><a href="/workout_plans/' + workout_plan.id + '" class="browse-plan-link">' + workout_plan.name + '</a></h4>'
         $('#browse-plan-item').append(html);
       });
-    });
-  });
-
-  $('#browse-plan-item').on('click', 'a.browse-plan-link', function(e){
-    e.preventDefault();
-
-    $('.workout-plan-item').hide();
-    $('#workout-plans-header').html($(this).text());
-    var formAction = $(this).attr('href') + '.json';
-
-    $.get(formAction, function(data){
-      data.workout_plans.forEach(function(workout_plan){
-        debugger;
-      })
     });
   });
 

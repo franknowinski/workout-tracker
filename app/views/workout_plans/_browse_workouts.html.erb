@@ -3,11 +3,7 @@
 <% if all_workout_plans.blank? %>
   <h2 class="workout-plan-item">There are no other workouts</h2>
 <% else %>
-  <!-- <#% all_workout_plans.each do |workout_plan| %> -->
-      <!-- <a href="/b" id="id="browse-workouts-link"">Click me to view other workouts!</a> -->
-    <div id="browse-plan-item">
-      <%= link_to 'Click me to view other workouts!', browse_workout_plans_path, {id: 'browse-workouts-link' } %>
-    </div>
-    <!-- <%#= render '/workout_plans/workout_plan_list', workout_plan: workout_plan %> -->
-  <!-- <%# end %> -->
+  <div id="browse-plan-item">
+    <%= link_to 'Click me to view other workouts!', browse_workout_plans_path, {id: 'browse-workouts-link' } %>
+  </div>
 <% end %>

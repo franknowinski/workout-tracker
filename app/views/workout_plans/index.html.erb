@@ -5,10 +5,16 @@
         <%= link_to 'Create your first workout!', new_workout_plan_exercise_path(current_user.new_plan), class: "workout-plan-item" %>
       <% else %>
       <h2 id="workout-plans-header">Your Workout Plans</h2><hr><br>
-        <% @workout_plans.each do |workout_plan| %>
-          <%= render 'workout_plan_list', workout_plan: workout_plan %>
+        <div id="workout-plans-index">
+          <% @workout_plans.each do |workout_plan| %>
+            <%= render 'workout_plan_list', workout_plan: workout_plan %>
+          <% end %>
         <% end %>
-      <% end %>
+        </div>
+
+        <div class="hidden-table">
+          <%= render 'browse_plan' %>
+        </div>
     </div>
 
     <div class="col-sm-5" id="browse-plan-list">
