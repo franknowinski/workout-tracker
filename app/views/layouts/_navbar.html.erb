@@ -1,6 +1,6 @@
 <nav class="navbar navbar-default" id="navbar">
   <ul class="nav nav-tabs" role="tablist" id="navbar-display">
-    <li role="presentation"><a href="/workout_plans" id="home" aria-controls="home" role="tab" ata-toggle="tab">Workout Plans</a></li>
+    <li role="presentation"><a href="/workout_plans" aria-controls="home" role="tab" ata-toggle="tab">Workout Plans</a></li>
     <% if current_user.current_plan %>
       <li role="presentation"><a href="<%= new_workout_plan_exercise_path(current_user.current_plan) %>" aria-controls="profile" role="tab" data-toggle="tab">Current Workout Plan</a></li>
     <% end %>

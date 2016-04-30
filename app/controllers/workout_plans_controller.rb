@@ -1,10 +1,28 @@
 class WorkoutPlansController < ApplicationController
   before_filter :authenticate_user!, only: [:new, :destroy]
-  before_action :set_workout_plan, only: [:edit, :update, :destroy]
+  before_action :set_workout_plan, only: [:show, :edit, :update, :destroy]
 
   def index
     @all_workout_plans = WorkoutPlan.all.select{ |workout| workout.user_id != current_user.id }
     @workout_plans = current_user.workout_plans
+  end
+
+  def show
+    @exercises = @workout_plan.exercises
+      respond_to do |format|
+        format.html {render :index}
+        format.json {render json: @exercises}
+      end
+    # respond_to do |format|
+    #   format.html { render :new }
+    #   format.json {
+    #     render json: {
+    #       workout_plan: @workout_plan,
+    #       workouts: @workout_plan.exercises.workouts,
+    #       muscle_group: @workout_plan.exercises.muscle_group
+    #     }
+    #   }
+    # end
   end
 
   def new

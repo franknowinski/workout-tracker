@@ -1,18 +1,17 @@
 <div class="container">
   <div class="row">
     <div class="col-sm-5" id="workout-plan-list">
-      <h2 id="workout-plans-header">Your Workout Plans</h2><hr><br>
-
       <% if @workout_plans.blank? %>
         <%= link_to 'Create your first workout!', new_workout_plan_exercise_path(current_user.new_plan), class: "workout-plan-item" %>
       <% else %>
+      <h2 id="workout-plans-header">Your Workout Plans</h2><hr><br>
         <% @workout_plans.each do |workout_plan| %>
           <%= render 'workout_plan_list', workout_plan: workout_plan %>
         <% end %>
       <% end %>
     </div>
 
-    <div class="col-sm-5" id="workout-plan-list">
+    <div class="col-sm-5" id="browse-plan-list">
       <%= render 'browse_workouts', all_workout_plans: @all_workout_plans %>
     </div>
   </div>

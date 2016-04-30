@@ -1,15 +1,3 @@
-// This is a manifest file that'll be compiled into application.js, which will include all the files
-// listed below.
-//
-// Any JavaScript/Coffee file within this directory, lib/assets/javascripts, vendor/assets/javascripts,
-// or vendor/assets/javascripts of plugins, if any, can be referenced here using a relative path.
-//
-// It's not advisable to add code directly here, but if you do, it'll appear at the bottom of the
-// compiled file.
-//
-// Read Sprockets README (https://github.com/sstephenson/sprockets#sprockets-directives) for details
-// about supported directives.
-//
 //= require jquery
 //= require jquery_ujs
 
@@ -37,13 +25,43 @@ function attachListeners(){
     $form.find('div.field_with_errors').html(errorText);
   });
 
-  $('tbody').on('click', 'a.edit-link', function(){
+  $('tbody').on('click', 'a.edit-link', function(event){
+    event.preventDefault();
     var workoutRow = $(this).parents('#workout-rows');
 
     // Hide workout values and display edit workout input form
     $('span', workoutRow).addClass('hide-row');
     $('#edit-form-instruction').removeClass('hide-row');
     $('input', workoutRow).attr('id', 'edit-workout');
+  });
+
+  $('#browse-plan-item #browse-workouts-link').click(function(e){
+    e.preventDefault();
+    var formAction = $(this).attr('href') + '.json';
+
+    $.getJSON(formAction, function(data){
+      $('#browse-workouts-link').hide();
+
+      data.browse_workout_plans.forEach(function(workout_plan){
+        // var date = new Date(workout_plan.created_at).toString().slice(0,10);
+        var html = '<h4><a href="/workout_plans/' + workout_plan.id + '" class="browse-plan-link">' + workout_plan.name + '</a></h4>'
+        $('#browse-plan-item').append(html);
+      });
+    });
+  });
+
+  $('#browse-plan-item').on('click', 'a.browse-plan-link', function(e){
+    e.preventDefault();
+
+    $('.workout-plan-item').hide();
+    $('#workout-plans-header').html($(this).text());
+    var formAction = $(this).attr('href') + '.json';
+
+    $.get(formAction, function(data){
+      data.workout_plans.forEach(function(workout_plan){
+        debugger;
+      })
+    });
   });
 
   // Abstracted away to use Remote True - create exercise form
