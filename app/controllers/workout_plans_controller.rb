@@ -17,10 +17,9 @@ class WorkoutPlansController < ApplicationController
   end
 
   def show
-    @exercises = @workout_plan.exercises
     respond_to do |format|
       format.html {render :index}
-      format.json {render json: @exercises}
+      format.json {render json: @workout_plan}
     end
   end
 

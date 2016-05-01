@@ -1,23 +1,45 @@
 <div class="container">
   <div class="row">
-    <!-- Workout Plan Table -->
-    <div class="col-sm-5" id="workout-plan-list">
-      <div class="row">
-        <h2 id="workout-plans-header" class="browse-plan-header"></h2><hr><br>
-      </div>
+    <!-- Browse Plans Index -->
+    <div class="col-sm-4" id="browse-index-page">
+      <h2 class="browse-plans-title">Browse Workout Plans</h2><hr>
 
-      <div class="hidden-table">
-        <div id="browse-table"></div>
+      <div id="browse-plans-item">
+        <% @workout_plans.each do |workout_plan| %>
+          <h3 class="browse-plans-name"><a href="/workout_plans/<%=workout_plan.id%>" class="browse-plan"><%= workout_plan.name %></a></h3>
+        <% end %>
       </div>
     </div>
 
-    <!-- Browse Workout Plans -->
-    <div class="col-sm-5" id="workout-plan-list">
+    <div class="col-sm-7 hidden" id="browse-plan-table">
+      <h2 class="browse-table-header browse-plans-title"></h2><hr>
+    </div>
+
+
+
+
+
+
+    <!-- Browse Plans Table -->
+    <!-- <div class="col-sm-9" id="workout-plan-list">
+      <div class="row">
+        <div class="col-sm-3">
+          <h2 id="workout-plans-header" class="browse-plan-header"></h2><hr><br>
+        </div>
+      </div>
+    </div>
+
+    <! Browse Plans Table -->
+    <!-- <div class="col-sm-8" id="workout-plan-list">
       <a href="/workout_plans" id="browse-plans-header">Browse Workout Plans</a><hr><br>
 
       <div class="browse-plan-container">
         <ul class="browse-plan-list"></ul>
       </div>
     </div>
+
+    <div class="hidden-table">
+      <div id="browse-table"></div>
+    </div> -->
   </div>
 </div>
