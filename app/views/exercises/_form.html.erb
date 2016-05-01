@@ -2,9 +2,9 @@
   <%= render 'workout_plan_name' %>
 <% end %>
 
-<%= render 'error_messages' %>
-
 <p><%= label_tag 'Select the muscle group you would like to create a workout for:' %></p>
+
+<div class="field_with_errors"></div>
 
 <p><%= f.collection_select :muscle_group_id, MuscleGroup.all, :id, :name, include_blank: 'Select' %>
 </p><br>

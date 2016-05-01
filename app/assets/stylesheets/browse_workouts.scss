@@ -8,20 +8,24 @@
   padding-bottom: 40px;
 }
 
-#browse-plan-item {
+#browse-click-me-link {
+  margin-top: 13px;
   a {
     font-weight: 200;
-    font-size: 1.3em;
+    font-size: 1.6em;
     color: rgba(0, 143, 179, 1.2);
   }
   a:hover {
     text-decoration: none;
     color: black;
   }
-}
-
-.browse-plan-link {
-  padding-top: 15px;
+  .browse-plan-link {
+    font-size: 1.3em;
+    margin-bottom: 50px;
+  }
+  h4 {
+    padding: 10px;
+  }
 }
 
 .hidden-table {

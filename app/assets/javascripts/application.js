@@ -19,11 +19,16 @@ function contstructTable(muscleGroup, workouts) {
   };
 }
 
+// function clearTable() {
+//   $('#workout-plans-index').addClass('hidden-table');
+//   $('#browse-table').html('');
+// }
 
-function attachListeners(){
+function attachListeners() {
 
-  $('#browse-plan-item').on('click', 'a.browse-plan-link', function(e){
+  $('#browse-click-me-link').on('click', 'a.browse-plan-link', function(e){
     e.preventDefault();
+    clearTable();
     var formAction = $(this).attr('href');
     $('#workout-plans-index').hide();
     $('div.hidden-table').removeClass('hidden-table');
@@ -40,6 +45,21 @@ function attachListeners(){
     });
   });
 
+  $('#browse-workouts-link').click(function(e){
+    e.preventDefault();
+    var formAction = $(this).attr('href');
+
+    $.getJSON(formAction, function(data){
+      $('#browse-workouts-link').addClass('hidden')
+
+      data.browse_workout_plans.forEach(function(workout_plan){
+        var html = '<h4><a href="/workout_plans/' + workout_plan.id + '" class="browse-plan-link">' + workout_plan.name + '</a></h4>';
+
+        $('#browse-click-me-link').append(html);
+      });
+    });
+  });
+
   // Clear validation error messages after successful request
   $('#new_exercise').bind("ajax:success", function(evt, xhr, status, error){
     $('div.field_with_errors').html("");
@@ -47,7 +67,6 @@ function attachListeners(){
 
   // Display error messages
   $('#new_exercise').bind("ajax:error", function(evt, xhr, status, error){
-
     var $form = $(this), errorText = '', errors;
     try {
       // Populate errorText with the comment errors
@@ -70,34 +89,6 @@ function attachListeners(){
     $('span', workoutRow).addClass('hide-row');
     $('#edit-form-instruction').removeClass('hide-row');
     $('input', workoutRow).attr('id', 'edit-workout');
-  });
-
-<<<<<<< HEAD
-  $('#browse-plans-header').click(function(){
-    event.preventDefault();
-    var url = $(this).attr('href') + '.json';
-    $.get(url, function(res){
-      res.all_workouts.forEach(function(workout_plan) {
-        if ($('li[data-workout-id="' + workout_plan.id + '"]').val() == undefined){
-          var html = '<li data-workout-id="' + workout_plan.id + '"><a href="/workout_plans/' + workout_plan.id +'" class="browse-workout-plan">' + workout_plan.name + '</a></li>';
-          $('.browse-plan-list').append(html);
-        };
-      });
-    });
-  });
-
-  $('#browse-plan-item #browse-workouts-link').click(function(e){
-    e.preventDefault();
-    var formAction = $(this).attr('href');
-
-    $.getJSON(formAction, function(data){
-      $('#browse-workouts-link').hide();
-
-      data.browse_workout_plans.forEach(function(workout_plan){
-        var html = '<h4><a href="/workout_plans/' + workout_plan.id + '" class="browse-plan-link">' + workout_plan.name + '</a></h4>'
-        $('#browse-plan-item').append(html);
-      });
-    });
   });
 
   // Abstracted away to use Remote True - create exercise form
