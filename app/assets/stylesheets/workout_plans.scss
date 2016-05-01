@@ -36,23 +36,27 @@
 
 /* WORKOUT PLANS INDEX */
 
-#workout-plans-header {
+#workout-plans-title {
   color: rgba(0, 143, 179, 1.2);
   font-weight: 200;
   font-size: 2.2em;
+  padding-top: 5px;
+  padding-bottom: -5px;
+  border-right: 1px solid rgba(0, 143, 179, 1.2);
 }
 
-#browse-plans-header {
+#workout-plans-date {
   color: rgba(0, 143, 179, 1.2);
   font-weight: 200;
   font-size: 2.2em;
+  padding: 5px;
 }
 
 #workout-plan-list {
   text-align: center;
   background-color: white;
   box-shadow: 1px 1px 2px gray;
-  margin-left: 60px;
+  margin-left: 240px;
   margin-top: 50px;
   margin-bottom: 50px;
 }
@@ -69,7 +73,9 @@
 
 .workout-plan-item {
   font-weight: 200;
-  font-size: 1.6em;
+  font-size: 1.8em;
+  padding: 8px;
+  padding-bottom: 10px;
   color: rgba(0, 143, 179, 1.2);
   a {
     color: rgba(0, 143, 179, 1.2);
@@ -78,4 +84,8 @@
     text-decoration: none;
     color: black;
   }
+}
+
+#workout-plans-index {
+  padding-bottom: 25px;
 }

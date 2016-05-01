@@ -1,1 +1,8 @@
-<h4 class="workout-plan-item"><%= link_to "#{workout_plan.name} - #{workout_plan.created_date}", new_workout_plan_exercise_path(workout_plan) %></h4><br>
+<div class="row">
+  <div class="col-sm-7">
+    <h4 class="workout-plan-item"><%= link_to "#{workout_plan.name}", new_workout_plan_exercise_path(workout_plan) %></h4>
+  </div>
+  <div class="col-sm-5">
+    <h4 class="workout-plan-item"><%= link_to "#{workout_plan.created_date}", new_workout_plan_exercise_path(workout_plan) %></h4>
+  </div>
+</div>
