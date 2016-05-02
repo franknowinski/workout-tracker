@@ -2,6 +2,7 @@ class WorkoutPlan < ActiveRecord::Base
   belongs_to :user
   has_many :exercises
   has_many :workouts, through: :exercises
+  has_many :comments
 
   MUSCLE = {
     "chest" => 1,

@@ -3,6 +3,7 @@ Rails.application.routes.draw do
   resources :workout_plans, only: [:index, :show, :new] do
     resources :exercises, only: [:new, :create]
     resources :workouts, only: [:edit, :update]
+    resources :comments, only: [:create]
     delete '/delete_workout/:id', to: 'workouts#destroy', as: 'destroy_workout'
   end
   resources :browse_workout_plans, only: [:index]

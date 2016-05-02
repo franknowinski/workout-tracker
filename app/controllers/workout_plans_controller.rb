@@ -22,14 +22,7 @@ class WorkoutPlansController < ApplicationController
       format.json {render json: @workout_plan}
     end
   end
-
-  def show
-    respond_to do |format|
-      format.html {render :index}
-      format.json {render json: @workout_plan.exercises}
-    end
-  end
-
+  
   def new
     current_user.new_plan
     redirect_to new_workout_plan_exercise_path(current_user.current_plan)

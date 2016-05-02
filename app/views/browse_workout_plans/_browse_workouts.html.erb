@@ -1,9 +1,0 @@
-<a href="/workout_plans" id="browse-plans-header">Browse Workout Plans</a><hr><br>
-
-<% if all_workout_plans.blank? %>
-  <h2 class="workout-plan-item">There are no other workouts</h2>
-<% else %>
-  <div id="browse-click-me-link">
-    <%= link_to 'Click me to view other workouts!', browse_workout_plans_path, {id: 'browse-workouts-link' } %>
-  </div>
-<% end %>
