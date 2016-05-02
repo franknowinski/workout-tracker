@@ -17,26 +17,26 @@ function contstructTable(muscleGroup, workouts) {
   };
 }
 
+// Clear workout table and comments
 function removeElements() {
   $('#browse-plan-table').removeClass('hidden');
-  $('div.table-rows').remove();
   $('a.leave-comment').remove();
+  $('div.table-rows').remove();
   $('div.comments-container').remove();
   $('.workout-comment').remove();
   $('blockquote').remove();
 }
 
 function constructComment(comment) {
-  var commentRow = '';
-
   var date = new Date(comment.created_at).toString().slice(0, 10);
   var user = comment.user.name || comment.user.email;
-  commentRow += '<blockquote><p>' + comment.content +'</p><footer>' + user + '<cite> ' + date + '</cite></footer></blockquote>';
+  var commentRow = '<blockquote><p>' + comment.content +'</p><footer>' + user + '<cite> ' + date + '</cite></footer></blockquote>';
 
   return commentRow;
 }
 
 $(function() {
+
   // Display workout plan
   $('#browse-plans-item').on('click', 'a.browse-plan', function(e){
     e.preventDefault();
@@ -50,30 +50,38 @@ $(function() {
         var muscleGroup = workout.muscle_group;
         var workouts = workout.workouts;
 
+        // Create workout plan table
         if (workouts.length > 0) {
           contstructTable(muscleGroup, workouts);
         }
       });
 
+      // Add comments to workout plan
       if (data.workout_plan.comments.length > 0) {
-        var commentHTML = '<div class="comments-container"<h2 class="comments-header">Comments:</h2><hr>';
+        var commentHTML = '<div class="comments-container"><h2 class="comments-header">Comments:</h2><hr>';
         var allComments = '';
+
         data.workout_plan.comments.forEach(function(comment){
           allComments += constructComment(comment);
         });
+
         $('#browse-plan-table').append(commentHTML + allComments);
       };
 
-      $('#browse-plan-table').append('<div class="workout-comment"><a href="' + this.url + '" class="leave-comment">Leave a comment</a></div></div>');
+      // Add 'Leave a comment' link
+      var commentLink = '<div class="workout-comment"><a href="' + this.url + '" class="leave-comment">Leave a comment</a></div></div>';
+
+      $('#browse-plan-table').append(commentLink);
     });
   });
 
+  // Display comment form
   $('#browse-plan-table').on('click', 'a.leave-comment', function(e){
     e.preventDefault();
     $('a.leave-comment').addClass('hidden');
     var formAction = $(this).attr('href');
 
-    var commentInput = '<div class="field-with-errors"></div><form action="' + formAction + '/comments" method="post" id="comment-form"><textarea name="comment" class="form-control" placeholder="Your Comment"></textarea><br><button type="submit" class="btn btn-primary">Post Comment</button></form>'
+    var commentInput = '<div class="field-with-errors"></div><form action="' + formAction + '/comments" method="post" id="comment-form"><textarea name="comment" class="form-control" rows="3" placeholder="Your Comment"></textarea><br><button type="submit" class="btn btn-primary">Post Comment</button></form>'
 
     $('.workout-comment').html(commentInput);
   });
@@ -95,6 +103,7 @@ $(function() {
           $('div.field-with-errors').append(html);
         } else {
           $('form').remove();
+          $('.field-with-errors').remove();
           $('a.leave-comment').removeClass('hidden');
           $('#browse-plan-table').append(constructComment(data.comment));
         }
