@@ -3,6 +3,7 @@ class WorkoutPlan < ActiveRecord::Base
   has_many :exercises
   has_many :workouts, through: :exercises
   has_many :comments
+  has_many :ratings
 
   MUSCLE = {
     "chest" => 1,
@@ -20,6 +21,10 @@ class WorkoutPlan < ActiveRecord::Base
 
   def available_muscle_groups
     self.exercises.select{ |exercise| !exercise.workouts.blank? }
+  end
+
+  def average_rating
+    self.ratings.map(&:rating).inject(:+) / ratings.count unless self.ratings.empty?
   end
 
   def muscle_group_by(name)

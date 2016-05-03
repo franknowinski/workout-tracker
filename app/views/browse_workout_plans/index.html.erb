@@ -6,7 +6,7 @@
 
       <div id="browse-plans-item">
         <% @workout_plans.each do |workout_plan| %>
-          <h3 class="browse-plans-name"><a href="/workout_plans/<%=workout_plan.id%>" class="browse-plan"><%= workout_plan.name %></a></h3>
+          <h3 class="browse-plans-name"><a href="/workout_plans/<%=workout_plan.id%>" class="browse-plan"><%= workout_plan.name %> <%= "  - #{workout_plan.average_rating}" if workout_plan.average_rating  %></a></h3>
         <% end %>
       </div>
     </div>

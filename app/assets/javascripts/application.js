@@ -1,6 +1,10 @@
 //= require jquery
 //= require jquery_ujs
 //= require browse_plans
+//= require workout_plan_table
+//= require comments
+//= require ratings
+
 
 function attachListeners() {
 
