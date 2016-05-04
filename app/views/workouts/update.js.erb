@@ -1,20 +1,5 @@
-function completeWorkout(workoutId) {
-  $('tr[data-workout-id= ' + workoutId + ']').toggleClass('completed');
-  $('.' + workoutId + '-edit').addClass('hide-row');
-  $('.' + workoutId + '-delete').addClass('hide-row');
-}
-
-function undoCompletion(workoutId){
-  $('tr[data-workout-id= ' + workoutId + ']').removeClass('completed');
-  $('.' + workoutId + '-edit').removeClass('hide-row');
-  $('.' + workoutId + '-delete').removeClass('hide-row');
-}
-
 $(function(){
   var workoutId = <%= @workout.id %>;
-
-  // Adds the completed class to the workout if it's completed
-  // <%= @completed == '1' %> ? completeWorkout(workoutId) : undoCompletion(workoutId);
 
   // Assign updated workout values to variables
   var workoutName = $('input.' + workoutId +'-name').val();
@@ -37,3 +22,19 @@ $(function(){
   $('input.' + workoutId +'-reps').removeAttr('id');
   $('#edit-form-instruction').addClass('hide-row');
 });
+
+
+// function completeWorkout(workoutId) {
+//   $('tr[data-workout-id= ' + workoutId + ']').toggleClass('completed');
+//   $('.' + workoutId + '-edit').addClass('hide-row');
+//   $('.' + workoutId + '-delete').addClass('hide-row');
+// }
+//
+// function undoCompletion(workoutId){
+//   $('tr[data-workout-id= ' + workoutId + ']').removeClass('completed');
+//   $('.' + workoutId + '-edit').removeClass('hide-row');
+//   $('.' + workoutId + '-delete').removeClass('hide-row');
+// }
+
+// Adds the completed class to the workout if it's completed
+// <%= @completed == '1' %> ? completeWorkout(workoutId) : undoCompletion(workoutId);

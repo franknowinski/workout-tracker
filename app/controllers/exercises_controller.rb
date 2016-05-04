@@ -7,6 +7,7 @@ class ExercisesController < ApplicationController
   end
 
   def create
+    # Exercise.create_for_user(current_user, params)
     @exercise = current_user.workout_plans.find(params[:workout_plan_id]).exercises.create(exercise_params)
     @exercise.workout_plan.update(name: params[:workout_plan][:name]) if @exercise.workout_plan.name.nil?
 
@@ -14,6 +15,7 @@ class ExercisesController < ApplicationController
      if @exercise.save
        format.html { render :new }
        format.js
+
      else
        format.html { render :new }
        format.js { render json: @exercise.errors }

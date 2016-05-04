@@ -23,8 +23,7 @@ $(function() {
   $('#browse-plans-item').on('click', 'a.browse-plan', function(e){
     e.preventDefault();
 
-    var averageRating,
-    formAction = $(this).attr('href');
+    var formAction = $(this).attr('href');
     removeElements();
 
     $.getJSON(formAction, function(data){

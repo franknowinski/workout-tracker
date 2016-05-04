@@ -15,6 +15,7 @@ function updateWorkoutRow(workout){
 };
 
 $(function(){
+  // Puts a line through completed workouts and updates the progress bar
   $('#workout-plan-table').on('click', '#workout_completed', function(e){
 
     var workoutPlanId = $(this).data('workout-plan'),

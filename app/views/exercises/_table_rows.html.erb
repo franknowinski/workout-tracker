@@ -24,7 +24,7 @@
 
       <% unless workout.completed %>
         <td><%= link_to 'Edit', edit_workout_plan_workout_path(workout.exercise.workout_plan, workout), class: "edit-link #{workout.id}-edit", remote: :true %></td>
-        <td><%= link_to 'X', workout_plan_destroy_workout_path(workout.exercise.workout_plan, workout), data: {id: workout.id}, method: :delete, remote: :true, class: "#{workout.id}-delete" %></td>
+        <td><%= link_to 'X', workout_plan_destroy_workout_path(workout.exercise.workout_plan, workout), data: {id: workout.id}, method: :delete, remote: :true, class: "#{workout.id}-delete delete-workout" %></td>
       <% else %>
         <!-- So the table border is the width of the row -->
         <td></td><td></td>

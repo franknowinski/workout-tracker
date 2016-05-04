@@ -7,14 +7,6 @@ function constructRatings(workout_plan){
   ].join('');
 };
 
-function ratePlanLink(workout_plan){
-  return [
-    '<div class="form-container col-sm-7">',
-      '<a href="/workout_plans/' + workout_plan.id + '/ratings" id="rate-plan" class="rate-plan-link">Rate workout</a>',
-    '</div>'
-  ].join('');
-};
-
 function constructfirstRating(workout_plan) {
   return [
     '<div class="row ratings-container">',
@@ -24,6 +16,14 @@ function constructfirstRating(workout_plan) {
     '</div>'
   ].join('');
 }
+
+function ratePlanLink(workout_plan){
+  return [
+    '<div class="form-container col-sm-7">',
+      '<a href="/workout_plans/' + workout_plan.id + '/ratings" id="rate-plan" class="rate-plan-link">Rate workout</a>',
+    '</div>'
+  ].join('');
+};
 
 function getAverageRating(ratings){
   return ratings.map(function(rating){
@@ -53,6 +53,7 @@ function displayRatingForm(url){
 
 $(function(){
 
+  // Displays rating form
   $('#browse-plan-table').on('click', 'a.rate-plan-link', function(e){
     e.preventDefault();
     $('.rate-plan-link').remove();
@@ -61,6 +62,7 @@ $(function(){
     $('.form-container').append(displayRatingForm(formAction));
   });
 
+  // Persists rating and updates the DOM
   $('#browse-plan-table').on('submit', '#rating-form', function(e){
     e.preventDefault();
     var data = $('form').serialize();

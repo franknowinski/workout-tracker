@@ -5,6 +5,7 @@
 //= require comments
 //= require ratings
 //= require progress_bar
+//= require exercise
 
 
 function attachListeners() {
@@ -18,10 +19,8 @@ function attachListeners() {
   $('#new_exercise').bind("ajax:error", function(evt, xhr, status, error){
     var $form = $(this), errorText = '', errors;
     try {
-      // Populate errorText with the comment errors
       errors = $.parseJSON(xhr.responseText);
     } catch(err) {
-      // If the responseText is not valid JSON (like if a 500 exception was thrown), populate errors with a generic error message.
       errors = {message: "Please reload the page and try again"};
     }
     for ( error in errors ) {
@@ -41,18 +40,6 @@ function attachListeners() {
   });
 
   // Abstracted away to use Remote True - create exercise form
-  // $('.exercise-form').submit(function(event){
-  //   event.preventDefault();
-  //   var form_method = $(this).attr('method');
-  //   var form_action = $(this).attr('action');
-  //
-  //   $.ajax(form_action, {
-  //     type: form_method,
-  //     dataType: 'script',
-  //     data: $(this).serialize()
-  //   })
-  // });
-
   // $('tbody td a').click(function(event){
   //   event.preventDefault();
   //
