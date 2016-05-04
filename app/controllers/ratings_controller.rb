@@ -7,9 +7,9 @@ class RatingsController < ApplicationController
 
     respond_to do |format|
       if @workout_plan.save
-        format.json { render json: @workout_plan.ratings }
+        format.json { render json: @workout_plan }
       else
-        format.json { render json: @workout_plan.ratings.last.errors.full_messages }
+        format.json { render json: @workout_plan.ratings.last.errors }
       end
     end
   end

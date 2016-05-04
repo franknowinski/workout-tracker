@@ -38,15 +38,11 @@ $(function() {
         }
       });
 
+      // Add workout plan average rating
       if (data.workout_plan.ratings.length > 0) {
         $('#browse-plan-table').append(constructRatings(data.workout_plan));
       } else {
-        var ratingHTML = [
-          '<div class="form-container col-sm-7">',
-            '<a href="/workout_plans/' + data.workout_plan.id + '/ratings" class="rate-plan">Rate workout</a>',
-          '</div>',
-        ].join('');
-        $('#browse-plan-table').append(ratingHTML);
+        $('#browse-plan-table').append(constructfirstRating(data.workout_plan));
       }
 
       // Add comments to workout plan
@@ -60,12 +56,14 @@ $(function() {
         data.workout_plan.comments.forEach(function(comment){
           allComments += constructComment(comment);
         });
-
-        $('#browse-plan-table').append(commentsHeader + allComments);
+        leaveCommentLink = constructLinks(this.url);
+        $('#browse-plan-table').append(commentsHeader + allComments + leaveCommentLink);
+      } else {
+        $('#browse-plan-table').append(constructFirstComment(this.url));
       };
 
-      // Add 'Leave a comment' link
-      $('#browse-plan-table').append(constructLinks(this.url));
+      // // Add 'Leave a comment' link
+      // $('#browse-plan-table').append(constructLinks(this.url));
     });
   });
 });

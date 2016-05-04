@@ -1,12 +1,20 @@
-.leave-comment {
+#leave-comment {
   font-size: 1.2em;
   font-weight: 300;
   padding-bottom: 50px;
+}
+
+#first-comment {
+  font-size: 1.7em;
+  font-weight: 200;
+  padding: 10px;
+  padding-top: 10px;
+  margin-left: 5px;
 }
 
 .comments-header {
   color: rgba(0, 143, 179, 1);
   font-weight: 200;
   margin-left: 15px;
-  font-size: 1.7em;
+  font-size: 1.6em;
 }
