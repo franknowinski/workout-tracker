@@ -27,6 +27,10 @@ class WorkoutPlan < ActiveRecord::Base
     self.ratings.map(&:rating).inject(:+) / ratings.count unless self.ratings.empty?
   end
 
+  def completed_workouts
+    ((self.workouts.where('completed': true).count / workouts.count.to_f) * 100).to_i
+  end
+
   def muscle_group_by(name)
     exercises.where(muscle_group_id: MUSCLE[name])
   end

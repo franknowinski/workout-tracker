@@ -21,8 +21,26 @@
   color: rgba(0, 143, 179, 1);
 }
 
+#completion-label {
+  font-size: 1.1em;
+  color: rgba(0, 143, 179, 1);
+  margin-top: -2px;
+}
+
+.progress-container {
+  margin-bottom: -18px;
+}
+
+#progress-bar {
+  width: 400px;
+}
+
 .field_with_errors li {
   padding-bottom: 20px;
   list-style-type: none;
   color: red;
+}
+
+.detele-workout-link {
+  padding-bottom: 55px;
 }

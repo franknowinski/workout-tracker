@@ -72,8 +72,8 @@ $(function(){
   $('#browse-plan-table').on('submit', '#comment-form', function(e){
     e.preventDefault();
 
-    var data = $('form').serialize();
-    var url = $(this).attr('action');
+    var data = $('form').serialize(),
+    url = $(this).attr('action');
 
     $.ajax({
       type: "POST",

@@ -1,0 +1,12 @@
+<div class="row progress-container">
+  <div class="col-sm-4">
+    <p id="completion-label">Percentage of Completion:</p>
+  </div>
+  <div class="progress col-sm-7" id="progress-bar">
+    <div class="row">
+      <div class="progress-bar col-sm-12" role="progressbar" aria-valuenow="<%= @workout_plan.completed_workouts %>" aria-valuemin="0" aria-valuemax="100" style="width: <%= @workout_plan.completed_workouts %>%;">
+        <%= @workout_plan.completed_workouts %>%
+      </div>
+    </div>
+  </div>
+</div><hr>

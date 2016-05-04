@@ -55,7 +55,7 @@ $(function() {
           allComments += constructComment(comment);
         });
         leaveCommentLink = constructLinks(this.url);
-        $('#browse-plan-table').append(commentsHeader + leaveCommentLink + allComments);
+        $('#browse-plan-table').append(commentsHeader + allComments + leaveCommentLink);
       } else {
         $('#browse-plan-table').append(constructFirstComment(this.url));
       };

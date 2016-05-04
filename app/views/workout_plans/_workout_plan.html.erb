@@ -1,9 +1,14 @@
 <% if @workout_plan.exercises.present? %>
-  <h2 id=workout-plan-name><%= @workout_plan.name %></h2>
 
-  <h4 id="workout-plan-links">
-    <%= link_to 'Delete Workout Plan', destroy_workout_plan_path(@workout_plan), method: :delete %>
-  </h4><hr>
+  <div class="row">
+    <h2 id=workout-plan-name><%= @workout_plan.name %>
+      <span class="delete-container">
+        <%= link_to 'X', destroy_workout_plan_path(@workout_plan), method: :delete, class: 'detele-workout-link' %>
+      </span>
+    </h2><br>
+  </div>
+
+  <%= render 'progress_bar' %>
 
   <% @workout_plan.all_muscle_groups.each do |muscle| %>
     <div class="row <%= muscle %>-group">

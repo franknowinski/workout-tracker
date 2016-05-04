@@ -14,7 +14,7 @@ $(function(){
   var workoutId = <%= @workout.id %>;
 
   // Adds the completed class to the workout if it's completed
-  <%= @completed == '1' %> ? completeWorkout(workoutId) : undoCompletion(workoutId);
+  // <%= @completed == '1' %> ? completeWorkout(workoutId) : undoCompletion(workoutId);
 
   // Assign updated workout values to variables
   var workoutName = $('input.' + workoutId +'-name').val();

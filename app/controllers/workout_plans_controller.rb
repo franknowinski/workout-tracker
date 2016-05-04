@@ -5,15 +5,6 @@ class WorkoutPlansController < ApplicationController
 
   def index
     @workout_plans = current_user.workout_plans
-    respond_to do |format|
-      format.html {render :index}
-      format.json {
-        render json: {
-          workouts: @workout_plans,
-          all_workouts: @all_workout_plans
-        }
-      }
-    end
   end
 
   def show
@@ -22,7 +13,7 @@ class WorkoutPlansController < ApplicationController
       format.json {render json: @workout_plan}
     end
   end
-  
+
   def new
     current_user.new_plan
     redirect_to new_workout_plan_exercise_path(current_user.current_plan)

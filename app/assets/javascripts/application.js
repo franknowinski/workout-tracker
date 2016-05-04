@@ -4,6 +4,7 @@
 //= require workout_plan_table
 //= require comments
 //= require ratings
+//= require progress_bar
 
 
 function attachListeners() {
@@ -29,8 +30,8 @@ function attachListeners() {
     $form.find('div.field_with_errors').html(errorText);
   });
 
-  $('tbody').on('click', 'a.edit-link', function(event){
-    event.preventDefault();
+  $('#workout-plan-table').on('click', 'a.edit-link', function(e){
+    e.preventDefault();
     var workoutRow = $(this).parents('#workout-rows');
 
     // Hide workout values and display edit workout input form

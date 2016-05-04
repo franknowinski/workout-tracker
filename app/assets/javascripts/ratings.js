@@ -80,20 +80,3 @@ $(function(){
     });
   });
 });
-
-// function resetRatingContainer(){
-//   $('.form-container').remove();
-//   // $('div.ratings-container').text('');
-// }
-
-
-// function constructfirstRating(workout_plan) {
-//   return [
-//     '<div class="row ratings-container">',
-//       '<div class="form-container id="first-rating-form" col-sm-11">',
-//         '<br>',
-//         '<a href="/workout_plans/' + workout_plan.id + '/ratings" class="rate-plan-link" id="first-rating">Be the first to rate this workout!</a><br><br>',
-//       '</div>',
-//     '</div>'
-//   ].join('');
-// }

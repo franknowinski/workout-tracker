@@ -17,6 +17,16 @@
   font-weight: 200;
 }
 
+.delete-container {
+  font-weight: 200;
+  font-size: .5em;
+  float: right;
+  padding-right: 5px;
+  a {
+    color: red;
+  }
+}
+
 #workout-plan-table {
   margin: 20px 60px 0px -10px;
   background-color: white;
