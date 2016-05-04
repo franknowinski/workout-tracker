@@ -1,7 +1,7 @@
 // Display blockquote
 function constructComment(comment) {
-  var date = new Date(comment.created_at).toString().slice(0, 10);
-  var user = comment.user.name || comment.user.email;
+  var date = new Date(comment.created_at).toString().slice(0, 10),
+  user = comment.user.name || comment.user.email;
 
   return [
     '<blockquote>',
@@ -19,7 +19,7 @@ function constructCommentForm(formAction) {
         '<textarea name="comment" class="form-control" rows="3" placeholder="Your Comment"></textarea><br>',
       '<button type="submit" class="btn btn-primary">Post Comment</button>',
     '</form>'
-  ].join(' ');
+  ].join('');
 }
 
 // Displays 'Leave a comment' link
@@ -36,6 +36,13 @@ function constructFirstComment(url){
     '<br><div class="workout-comment">',
       '<a href="' + url + '" id="first-comment" class="leave-comment-link">Be the first to leave a comment!</a>',
     '</div>'
+  ].join('');
+}
+
+function constructCommentsHeader(){
+  return [
+    '<div class="comments-container">',
+      '<h2 class="comments-header">Comments:</h2><hr>'
   ].join('');
 }
 

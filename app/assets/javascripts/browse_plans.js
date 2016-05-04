@@ -23,14 +23,15 @@ $(function() {
   $('#browse-plans-item').on('click', 'a.browse-plan', function(e){
     e.preventDefault();
 
-    var averageRating, formAction = $(this).attr('href');
+    var averageRating,
+    formAction = $(this).attr('href');
     removeElements();
 
     $.getJSON(formAction, function(data){
       $('.browse-table-header').text(data.workout_plan.name);
       data.workout_plan.exercises.forEach(function(workout){
-        var muscleGroup = workout.muscle_group;
-        var workouts = workout.workouts;
+        var muscleGroup = workout.muscle_group,
+        workouts = workout.workouts;
 
         // Create workout plan table
         if (workouts.length > 0) {
@@ -47,23 +48,17 @@ $(function() {
 
       // Add comments to workout plan
       if (data.workout_plan.comments.length > 0) {
-        var commentsHeader = [
-          '<div class="comments-container">',
-            '<h2 class="comments-header">Comments:</h2><hr>'
-        ].join(' ');
+        var commentsHeader = constructCommentsHeader(),
+        allComments = '';
 
-        var allComments = '';
         data.workout_plan.comments.forEach(function(comment){
           allComments += constructComment(comment);
         });
         leaveCommentLink = constructLinks(this.url);
-        $('#browse-plan-table').append(commentsHeader + allComments + leaveCommentLink);
+        $('#browse-plan-table').append(commentsHeader + leaveCommentLink + allComments);
       } else {
         $('#browse-plan-table').append(constructFirstComment(this.url));
       };
-
-      // // Add 'Leave a comment' link
-      // $('#browse-plan-table').append(constructLinks(this.url));
     });
   });
 });

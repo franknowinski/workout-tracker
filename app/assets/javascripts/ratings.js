@@ -25,7 +25,6 @@ function constructfirstRating(workout_plan) {
   ].join('');
 }
 
-
 function getAverageRating(ratings){
   return ratings.map(function(rating){
     return rating.rating;
