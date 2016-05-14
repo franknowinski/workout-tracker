@@ -1,17 +1,17 @@
 development:
   adapter: postgresql
   encoding: unicode
-  database: discover_shows_development
+  database: workout_tracker_development
   pool: 5
 
 test:
   adapter: postgresql
   encoding: unicode
-  database: discover_shows_test
+  database: workout_tracker_test
   pool: 5
 
 production:
   adapter: postgresql
   encoding: unicode
-  database: discover_shows_production
+  database: workout_tracker_production
   pool: 5
