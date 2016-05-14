@@ -23,7 +23,7 @@ class WorkoutsController < ApplicationController
   end
 
   def destroy
-    if @workout = current_user.workouts.find_by(:id => params[:id])
+    if @workout = current_user.workouts.find_by(id: params[:id])
       @workout.destroy
     else
       redirect_to root_path, alert: 'Access Denied'
