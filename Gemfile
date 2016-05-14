@@ -14,6 +14,7 @@ gem 'devise'
 gem 'omniauth-facebook'
 gem 'bootstrap-sass', '~> 3.3.6'
 gem 'dotenv-rails', :groups => [:development, :test]
+gem 'rails_12factor', group: :production
 
 group :development, :test do
   gem "rspec-rails"

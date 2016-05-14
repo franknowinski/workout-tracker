@@ -3,21 +3,15 @@ development:
   encoding: unicode
   database: workout_tracker_development
   pool: 5
-  # username: test_postgres
-  # password:
 
 test:
   adapter: postgresql
   encoding: unicode
   database: workout_tracker_test
   pool: 5
-  # username: test_postgres
-  # password:
 
 production:
   adapter: postgresql
   encoding: unicode
   database: workout_tracker_production
   pool: 5
-  # username: test_postgres
-  # password:
