@@ -1,7 +1,7 @@
 class Exercise < ActiveRecord::Base
   belongs_to :workout_plan
   belongs_to :muscle_group
-  has_many :workouts
+  has_many :workouts, dependent: :destroy
   before_save :muscle_group_blank?
   before_save :workouts_blank?
   accepts_nested_attributes_for :muscle_group

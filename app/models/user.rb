@@ -1,5 +1,5 @@
 class User < ActiveRecord::Base
-  has_many :workout_plans
+  has_many :workout_plans, dependent: :destroy
   has_many :workouts, through: :workout_plans
   enum role: [:user, :guest, :admin]
   after_initialize :set_default_role, :if => :new_record?

@@ -1,6 +1,6 @@
 class WorkoutPlan < ActiveRecord::Base
   belongs_to :user
-  has_many :exercises
+  has_many :exercises, dependent: :destroy
   has_many :workouts, through: :exercises
   has_many :comments
   has_many :ratings
